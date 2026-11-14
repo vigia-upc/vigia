@@ -22,3 +22,96 @@ a { color: inherit; text-decoration: none; }
 .container { width: min(1120px, 92%); margin-inline: auto; }
 
 /* Cada integrante agrega aquí los estilos de su sección */
+
+/* === Segmentos === */
+#segmentos {
+  --seg-navy: #16355e;
+  --seg-yellow: #f2c744;
+  --seg-cream: #fafaf5;
+  --seg-muted: #4a5568;
+}
+
+.seg {
+  padding: 4rem 0;
+  background: var(--seg-cream);
+  scroll-margin-top: 4rem;
+}
+
+.seg-header {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.seg-eyebrow {
+  display: inline-block;
+  margin-bottom: .5rem;
+  padding: .25rem .75rem;
+  border-radius: 999px;
+  background: rgba(242, 199, 68, .25);
+  color: var(--seg-navy);
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.seg-title {
+  color: var(--seg-navy);
+  font-size: 1.75rem;
+  line-height: 1.25;
+  margin-bottom: .75rem;
+}
+
+.seg-lead { color: var(--seg-muted); }
+
+.seg-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.seg-card {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 1.75rem 1.5rem;
+  background: #fff;
+  border: 1px solid #e6e8ee;
+  border-top: 4px solid var(--seg-yellow);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(22, 53, 94, .06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.seg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(22, 53, 94, .12);
+}
+
+.seg-icon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 12px;
+  background: var(--seg-navy);
+  color: var(--seg-yellow);
+  font-size: 1.35rem;
+}
+
+.seg-card-title {
+  color: var(--seg-navy);
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.seg-card-text {
+  color: var(--seg-muted);
+  font-size: .95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seg-card { transition: none; }
+  .seg-card:hover { transform: none; }
+}
+/* === Fin Segmentos === */
