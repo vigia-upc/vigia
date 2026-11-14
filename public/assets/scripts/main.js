@@ -79,5 +79,11 @@
         '! Te avisaremos cuando Vigía esté disponible en tu distrito. No guardamos datos personales.';
     });
   }
+
+  /* --- Footer: año dinámico --- */
+  var footerYear = document.getElementById('footer-year');
+  if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+  }
 })();
 /* === Fin Segmentos / CTA / Footer === */
