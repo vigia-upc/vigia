@@ -153,13 +153,13 @@
       ctaBusy = true;
       ctaBtn.classList.add('cta-loading');
       ctaBtn.setAttribute('aria-busy', 'true');
-      ctaBtn.disabled = true;
+      ctaBtn.setAttribute('aria-disabled', 'true');
 
       window.setTimeout(function () {
         ctaBusy = false;
         ctaBtn.classList.remove('cta-loading');
         ctaBtn.removeAttribute('aria-busy');
-        ctaBtn.disabled = false;
+        ctaBtn.removeAttribute('aria-disabled');
         ctaForm.reset();
 
         ctaReplayClass(ctaStatusBox, 'cta-status-show');
