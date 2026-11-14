@@ -60,6 +60,61 @@
       </div>
     </section>
     <!-- === Fin Segmentos === -->
+
+    <!-- === CTA === -->
+    <section id="cta" class="cta" aria-labelledby="cta-title">
+      <div class="container cta-inner">
+        <div class="cta-copy">
+          <h2 id="cta-title" class="cta-title">Rompe el silencio sin exponerte</h2>
+          <p class="cta-text">Sé de los primeros en usar Vigía en tu distrito. Te avisaremos cuando la app esté disponible.</p>
+          <ul class="cta-points">
+            <li><i class="fa-solid fa-user-secret" aria-hidden="true"></i> No pedimos tu nombre real</li>
+            <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Tu correo solo se usa para avisarte del lanzamiento</li>
+            <li><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> Gratis para comerciantes y vecinos</li>
+          </ul>
+        </div>
+
+        <form id="cta-form" class="cta-form" novalidate aria-labelledby="cta-form-title">
+          <h3 id="cta-form-title" class="cta-form-title">Únete a la lista de espera</h3>
+
+          <div class="cta-field">
+            <label for="cta-alias" class="cta-label">Nombre o alias <span class="cta-optional">(opcional)</span></label>
+            <input type="text" id="cta-alias" name="alias" class="cta-input" autocomplete="nickname" maxlength="40" placeholder="Ej. Bodega Doña Rosa">
+          </div>
+
+          <div class="cta-field">
+            <label for="cta-email" class="cta-label">Correo electrónico</label>
+            <input type="email" id="cta-email" name="email" class="cta-input" autocomplete="email" required aria-describedby="cta-email-error" placeholder="tucorreo@ejemplo.com">
+            <p id="cta-email-error" class="cta-error" aria-live="polite"></p>
+          </div>
+
+          <div class="cta-field">
+            <label for="cta-tipo" class="cta-label">Tipo de usuario</label>
+            <select id="cta-tipo" name="tipo" class="cta-input" required aria-describedby="cta-tipo-error">
+              <option value="">Selecciona una opción</option>
+              <option value="comerciante">Comerciante o bodeguero</option>
+              <option value="dirigente">Dirigente de asociación o gremio</option>
+              <option value="emprendedor">Nuevo emprendedor</option>
+              <option value="vecino">Vecino</option>
+            </select>
+            <p id="cta-tipo-error" class="cta-error" aria-live="polite"></p>
+          </div>
+
+          <div class="cta-field">
+            <label for="cta-distrito" class="cta-label">Distrito</label>
+            <input type="text" id="cta-distrito" name="distrito" class="cta-input" required aria-describedby="cta-distrito-error" maxlength="60" placeholder="Ej. San Juan de Lurigancho">
+            <p id="cta-distrito-error" class="cta-error" aria-live="polite"></p>
+          </div>
+
+          <button type="submit" class="cta-btn">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Quiero unirme
+          </button>
+
+          <p id="cta-status" class="cta-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+    <!-- === Fin CTA === -->
   </main>
 
   <script src="assets/scripts/main.js"></script>
