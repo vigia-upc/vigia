@@ -174,5 +174,29 @@
   if (footerYear) {
     footerYear.textContent = new Date().getFullYear();
   }
+
+  /* --- Footer: botón volver arriba --- */
+  var footerTop = document.getElementById('footer-top');
+  if (footerTop) {
+    var footerTicking = false;
+
+    var footerUpdateTop = function () {
+      footerTicking = false;
+      footerTop.classList.toggle('footer-top-show', window.pageYOffset > 600);
+    };
+
+    window.addEventListener('scroll', function () {
+      if (!footerTicking) {
+        footerTicking = true;
+        window.requestAnimationFrame(footerUpdateTop);
+      }
+    }, { passive: true });
+
+    footerTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: segReducedMotion.matches ? 'auto' : 'smooth' });
+    });
+
+    footerUpdateTop();
+  }
 })();
 /* === Fin Segmentos / CTA / Footer === */

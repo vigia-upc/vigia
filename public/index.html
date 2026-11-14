@@ -141,15 +141,20 @@
 
     <!-- === Footer === -->
     <footer class="footer" role="contentinfo">
+      <div class="footer-wave" aria-hidden="true">
+        <svg class="footer-wave-svg" viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
+          <path d="M0 20 Q 180 4 360 20 T 720 20 T 1080 20 T 1440 20 T 1800 20 T 2160 20 T 2520 20 T 2880 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </div>
       <div class="container footer-inner">
-        <div class="footer-brand">
+        <div class="footer-brand" data-reveal="footer">
           <a href="#hero" class="footer-logo-link" aria-label="Vigía, volver al inicio">
             <img src="assets/images/logo-vigia.png" alt="Logo de Vigía" class="footer-logo" width="1607" height="596">
           </a>
           <p class="footer-tagline">Reporte anónimo de extorsión para comerciantes de Lima.</p>
         </div>
 
-        <nav class="footer-nav" aria-label="Secciones del sitio">
+        <nav class="footer-nav" aria-label="Secciones del sitio" data-reveal="footer">
           <h2 class="footer-heading">Secciones</h2>
           <ul class="footer-list">
             <li><a href="#hero" class="footer-link">Inicio</a></li>
@@ -161,7 +166,7 @@
           </ul>
         </nav>
 
-        <div class="footer-team">
+        <div class="footer-team" data-reveal="footer">
           <h2 class="footer-heading">Equipo</h2>
           <ul class="footer-list">
             <li>Diego Avalos</li>
@@ -178,6 +183,10 @@
         <p>Proyecto académico UPC, curso 1ASI0385</p>
         <p>&copy; <span id="footer-year">2026</span> Vigía</p>
       </div>
+
+      <button type="button" id="footer-top" class="footer-top" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+      </button>
     </footer>
     <!-- === Fin Footer === -->
   </main>
