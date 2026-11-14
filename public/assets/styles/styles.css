@@ -22,3 +22,246 @@ a { color: inherit; text-decoration: none; }
 .container { width: min(1120px, 92%); margin-inline: auto; }
 
 /* Cada integrante agrega aquí los estilos de su sección */
+
+/* feature/navbar: barra de navegación sticky y menú responsive */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(250, 250, 245, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(22, 53, 94, 0.1);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.navbar.is-scrolled {
+  border-bottom-color: rgba(22, 53, 94, 0.16);
+  box-shadow: 0 4px 16px rgba(22, 53, 94, 0.08);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 72px;
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.navbar-logo {
+  height: 38px;
+  width: auto;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.navbar-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 2px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  border-radius: 6px;
+  transition: color 0.2s ease;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.navbar-link:hover,
+.navbar-link.is-active {
+  color: var(--navy);
+}
+
+.navbar-link:hover::after,
+.navbar-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.navbar-cta:hover {
+  background: var(--navy-dark);
+}
+
+.navbar-cta:active {
+  transform: translateY(1px);
+}
+
+.navbar-cta-mobile {
+  display: none;
+}
+
+.navbar-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(22, 53, 94, 0.2);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--navy);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.navbar-toggle:hover {
+  background: rgba(22, 53, 94, 0.06);
+  border-color: var(--navy);
+}
+
+.navbar-brand:focus-visible,
+.navbar-link:focus-visible,
+.navbar-toggle:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.navbar-cta:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1024px) {
+  .navbar-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 4% 20px;
+    background: var(--cream);
+    border-top: 1px solid rgba(22, 53, 94, 0.08);
+    border-bottom: 1px solid rgba(22, 53, 94, 0.16);
+    box-shadow: 0 12px 24px rgba(22, 53, 94, 0.08);
+  }
+
+  .navbar-nav.is-open {
+    display: flex;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .navbar-link {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 8px;
+  }
+
+  .navbar-link::after {
+    display: none;
+  }
+
+  .navbar-link:hover,
+  .navbar-link.is-active {
+    background: rgba(22, 53, 94, 0.06);
+    padding-left: 12px;
+  }
+
+  .navbar-toggle {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 599px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  .navbar-inner {
+    min-height: 64px;
+    gap: 12px;
+  }
+
+  .navbar-logo {
+    height: 32px;
+  }
+
+  .navbar-cta-desktop {
+    display: none;
+  }
+
+  .navbar-cta-mobile {
+    display: inline-flex;
+    width: 100%;
+    min-height: 44px;
+    margin-top: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .navbar,
+  .navbar-link,
+  .navbar-link::after,
+  .navbar-cta,
+  .navbar-toggle {
+    transition: none;
+  }
+}
