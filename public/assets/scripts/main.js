@@ -66,6 +66,9 @@
       distrito: document.getElementById('cta-distrito')
     };
     var ctaStatus = document.getElementById('cta-status');
+    var ctaStatusBox = ctaStatus.parentNode;
+    var ctaBtn = ctaForm.querySelector('.cta-btn');
+    var ctaBusy = false;
     var ctaEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
     var ctaValidators = {
@@ -109,14 +112,34 @@
       });
     });
 
+    // Reinicia una animación CSS quitando y volviendo a poner la clase
+    var ctaReplayClass = function (el, className) {
+      el.classList.remove(className);
+      void el.offsetWidth;
+      el.classList.add(className);
+    };
+
+    var ctaShake = function (field) {
+      var control = field.parentNode;
+      ctaReplayClass(control, 'cta-shake');
+      control.addEventListener('animationend', function onEnd() {
+        control.removeEventListener('animationend', onEnd);
+        control.classList.remove('cta-shake');
+      });
+    };
+
     ctaForm.addEventListener('submit', function (event) {
       event.preventDefault();
+      if (ctaBusy) return;
+
       ctaStatus.textContent = '';
+      ctaStatusBox.classList.remove('cta-status-show');
 
       var firstInvalid = null;
       Object.keys(ctaFields).forEach(function (name) {
-        if (!ctaValidateField(name) && !firstInvalid) {
-          firstInvalid = ctaFields[name];
+        if (!ctaValidateField(name)) {
+          ctaShake(ctaFields[name]);
+          if (!firstInvalid) firstInvalid = ctaFields[name];
         }
       });
 
@@ -125,10 +148,24 @@
         return;
       }
 
+      // Estado de carga breve (simulado: no se envía nada a ningún servidor)
       var alias = document.getElementById('cta-alias').value.trim();
-      ctaForm.reset();
-      ctaStatus.textContent = '¡Listo' + (alias ? ', ' + alias : '') +
-        '! Te avisaremos cuando Vigía esté disponible en tu distrito. No guardamos datos personales.';
+      ctaBusy = true;
+      ctaBtn.classList.add('cta-loading');
+      ctaBtn.setAttribute('aria-busy', 'true');
+      ctaBtn.disabled = true;
+
+      window.setTimeout(function () {
+        ctaBusy = false;
+        ctaBtn.classList.remove('cta-loading');
+        ctaBtn.removeAttribute('aria-busy');
+        ctaBtn.disabled = false;
+        ctaForm.reset();
+
+        ctaReplayClass(ctaStatusBox, 'cta-status-show');
+        ctaStatus.textContent = '¡Listo' + (alias ? ', ' + alias : '') +
+          '! Te avisaremos cuando Vigía esté disponible en tu distrito. No guardamos datos personales.';
+      }, segReducedMotion.matches ? 300 : 900);
     });
   }
 
