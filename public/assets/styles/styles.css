@@ -1,0 +1,24 @@
+/* Variables de marca (colores del logo) */
+:root {
+  --navy: #16355e;
+  --navy-dark: #0f2542;
+  --yellow: #f2c744;
+  --cream: #fafaf5;
+  --text: #1f2937;
+  --muted: #5b6678;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+.container { width: min(1120px, 92%); margin-inline: auto; }
+
+/* Cada integrante agrega aquí los estilos de su sección */
