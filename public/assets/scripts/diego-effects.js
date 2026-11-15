@@ -8,7 +8,7 @@
   // El estado inicial oculto del CSS solo aplica con .js: sin JS todo queda visible
   root.classList.add('js');
 
-  /* --- Aparición al entrar en pantalla (data-reveal="seg") --- */
+  /* --- Aparición al entrar en pantalla (data-reveal="seg|cta") --- */
   if (!reducedMotion.matches && 'IntersectionObserver' in window) {
     var revealObserver = new IntersectionObserver(function (entries) {
       var order = {}; // posición dentro de este lote, por sección
@@ -26,7 +26,7 @@
       });
     }, { threshold: 0.2 });
 
-    Array.prototype.forEach.call(document.querySelectorAll('[data-reveal="seg"]'), function (el) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-reveal="seg"], [data-reveal="cta"]'), function (el) {
       el.classList.add(el.getAttribute('data-reveal') + '-reveal');
       revealObserver.observe(el);
     });

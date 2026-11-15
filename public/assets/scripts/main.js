@@ -6,8 +6,8 @@
 
   var segReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* --- Aparición al hacer scroll (cta y footer; segmentos en diego-effects.js) --- */
-  var segRevealEls = document.querySelectorAll('[data-reveal]:not([data-reveal="seg"])');
+  /* --- Aparición al hacer scroll (footer; segmentos y cta en diego-effects.js) --- */
+  var segRevealEls = document.querySelectorAll('[data-reveal="footer"]');
 
   if (!segReducedMotion.matches && 'IntersectionObserver' in window) {
     var segRevealObserver = new IntersectionObserver(function (entries) {
