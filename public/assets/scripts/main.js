@@ -192,3 +192,32 @@
   }
 })();
 /* === Fin Segmentos / CTA / Footer === */
+
+// =========================================
+// ANIMACIÓN: SECCIÓN PROBLEMA
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const cards = document.querySelectorAll('.problema-card');
+
+  cards.forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = `opacity 0.6s ease-out ${index * 0.15}s, transform 0.6s ease-out ${index * 0.15}s`;
+    scrollObserver.observe(card);
+  });
+});
