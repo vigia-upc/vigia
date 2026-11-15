@@ -2439,3 +2439,17 @@ html {
   font-weight: 600;
   color: var(--navy);
 }
+/* === Animaciones finales: barra de progreso de lectura === */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  height: 3px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+  pointer-events: none;
+}

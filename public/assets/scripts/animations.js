@@ -89,6 +89,17 @@
     });
   }
 
+  /* --- Barra de progreso de lectura (refleja la posición; no es una animación) --- */
+  var readProgress = document.querySelector('.read-progress');
+
+  if (readProgress) {
+    scrollTasks.push(function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      readProgress.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
+    });
+  }
+
   requestScrollTasks();
 
   /* --- Contadores: el número sube de 0 a su valor al entrar en pantalla --- */
