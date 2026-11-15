@@ -338,7 +338,8 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px;
   font-weight: 600;
 
-  transition: all 0.3s ease;
+  /* Elevación y brillo diagonal: bloque compartido al final del archivo */
+  transition: background-color 0.3s ease;
 }
 
 /* BOTON PRINCIPAL */
@@ -351,7 +352,6 @@ a { color: inherit; text-decoration: none; }
 
 .hero-btn-primary:hover {
   background-color: #244b78;
-  transform: translateY(-3px);
 }
 
 /* BOTON SECUNDARIO */
@@ -363,7 +363,6 @@ a { color: inherit; text-decoration: none; }
 
 .hero-btn-secondary:hover {
   background-color: #e4b82e;
-  transform: translateY(-3px);
 }
 
 /* ELEMENTO VISUAL DEL LOGO */
@@ -1981,3 +1980,67 @@ html {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.12); }
 }
+
+/* ---------- Hero: botones con el mismo efecto que .cta-btn ---------- */
+.hero-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: background-color .3s ease, transform .2s ease;
+}
+
+.hero-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .6), transparent);
+  transform: translateX(-180%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.hero-btn:hover,
+.hero-btn:focus-visible { transform: translateY(-2px); }
+
+.hero-btn:hover::before,
+.hero-btn:focus-visible::before {
+  transform: translateX(350%) skewX(-20deg);
+  transition: transform .6s ease;
+}
+
+.hero-btn:active { transform: translateY(0) scale(.99); }
+
+.hero-btn:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+
+/* ---------- Movimiento reducido: todo visible y sin animación ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero, .hero *, .hero *::before, .hero *::after,
+  .problema-section, .problema-section *, .problema-section *::before, .problema-section *::after,
+  .como, .como *, .como *::before, .como *::after,
+  .caracteristicas-section, .caracteristicas-section *, .caracteristicas-section *::before, .caracteristicas-section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .hero-btn,
+  .problema-card,
+  .como-card,
+  .caracteristica-card { transform: none !important; }
+
+  .js .hero-reveal,
+  .js .problema-reveal,
+  .js .como-reveal,
+  .js .carac-reveal { opacity: 1; }
+
+  .hero-btn::before,
+  .problema-card::after,
+  .como-card::after,
+  .caracteristica-card::after { display: none; }
+}
+/* === Fin Hero, Problema, Cómo funciona y Características === */
