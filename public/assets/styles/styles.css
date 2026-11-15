@@ -875,9 +875,9 @@ html {
 }
 /* === Fin Footer === */
 
-/* === Segmentos, CTA y Footer (Diego) === */
+/* === Segmentos, CTA y Footer === */
 /* Efectos y animaciones. El estado oculto inicial solo aplica con .js en <html>
-   (lo agrega diego-effects.js); sin JS todo el contenido queda visible. */
+   (lo agrega animations.js); sin JS todo el contenido queda visible. */
 
 /* ---------- Segmentos ---------- */
 .seg-card {
@@ -970,7 +970,7 @@ html {
   will-change: transform;
 }
 
-/* Entrada escalonada (el retraso lo calcula diego-effects.js) */
+/* Entrada escalonada (el retraso lo calcula animations.js) */
 .js .seg-reveal:not(.seg-visible) { opacity: 0; }
 
 .seg-visible {
@@ -1216,7 +1216,7 @@ html {
 .footer-link:hover,
 .footer-link:focus-visible { transform: translateX(4px); }
 
-/* Columnas con entrada escalonada (retraso calculado en diego-effects.js) */
+/* Columnas con entrada escalonada (retraso calculado en animations.js) */
 .js .footer-reveal:not(.footer-visible) { opacity: 0; }
 
 .footer-visible {
@@ -1271,4 +1271,4 @@ html {
   .cta-form::after,
   .footer-logo-halo { display: none; }
 }
-/* === Fin Segmentos, CTA y Footer (Diego) === */
+/* === Fin Segmentos, CTA y Footer === */

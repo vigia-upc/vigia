@@ -1,4 +1,4 @@
-/* === Segmentos, CTA y Footer (Diego): efectos visuales === */
+/* === Segmentos, CTA y Footer: efectos visuales === */
 (function () {
   'use strict';
 
@@ -75,4 +75,4 @@
     });
   }
 })();
-/* === Fin Segmentos, CTA y Footer (Diego) === */
+/* === Fin Segmentos, CTA y Footer === */

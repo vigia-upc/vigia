@@ -70,7 +70,7 @@
 
   var segReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  // Los efectos visuales (aparición, tilt, volver arriba) están en diego-effects.js
+  // Los efectos visuales (aparición, tilt, volver arriba) están en animations.js
 
   /* --- CTA: formulario de lista de espera (no envía datos a ningún servidor) --- */
   var ctaForm = document.getElementById('cta-form');
