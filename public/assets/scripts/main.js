@@ -6,8 +6,8 @@
 
   var segReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* --- Aparición al hacer scroll (data-reveal="seg|cta|footer") --- */
-  var segRevealEls = document.querySelectorAll('[data-reveal]');
+  /* --- Aparición al hacer scroll (cta y footer; segmentos en diego-effects.js) --- */
+  var segRevealEls = document.querySelectorAll('[data-reveal]:not([data-reveal="seg"])');
 
   if (!segReducedMotion.matches && 'IntersectionObserver' in window) {
     var segRevealObserver = new IntersectionObserver(function (entries) {
@@ -33,28 +33,6 @@
       segRevealObserver.observe(el);
     });
   }
-
-  /* --- Segmentos: tilt 3D siguiendo el mouse (solo escritorio con mouse) --- */
-  var segTiltQuery = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1024px)');
-  var segMaxTilt = 6; // grados
-
-  Array.prototype.forEach.call(document.querySelectorAll('.seg-card'), function (card) {
-    card.addEventListener('mousemove', function (event) {
-      if (!segTiltQuery.matches || segReducedMotion.matches) return;
-      var rect = card.getBoundingClientRect();
-      var x = (event.clientX - rect.left) / rect.width - 0.5;
-      var y = (event.clientY - rect.top) / rect.height - 0.5;
-      card.classList.add('seg-tilting');
-      card.style.setProperty('--seg-ry', (x * segMaxTilt * 2).toFixed(2) + 'deg');
-      card.style.setProperty('--seg-rx', (-y * segMaxTilt * 2).toFixed(2) + 'deg');
-    });
-
-    card.addEventListener('mouseleave', function () {
-      card.classList.remove('seg-tilting');
-      card.style.removeProperty('--seg-rx');
-      card.style.removeProperty('--seg-ry');
-    });
-  });
 
   /* --- CTA: formulario de lista de espera (no envía datos a ningún servidor) --- */
   var ctaForm = document.getElementById('cta-form');

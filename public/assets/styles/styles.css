@@ -32,8 +32,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 .seg {
+  position: relative;
   padding: 4rem 0;
-  background: var(--seg-cream);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(242, 199, 68, .12), transparent 45%),
+    linear-gradient(180deg, var(--seg-cream) 0%, rgba(22, 53, 94, .04) 100%),
+    var(--seg-cream);
   scroll-margin-top: 4rem;
 }
 
@@ -61,23 +65,6 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: .75rem;
 }
 
-.seg-lead { color: var(--seg-muted); }
-
-.seg-grid {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-.seg {
-  position: relative;
-  background:
-    radial-gradient(circle at 15% 0%, rgba(242, 199, 68, .12), transparent 45%),
-    linear-gradient(180deg, var(--seg-cream) 0%, rgba(22, 53, 94, .04) 100%),
-    var(--seg-cream);
-}
-
 .seg-title::after {
   content: "";
   display: block;
@@ -88,9 +75,16 @@ a { color: inherit; text-decoration: none; }
   background: var(--seg-yellow);
 }
 
+.seg-lead { color: var(--seg-muted); }
+
+.seg-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
 .seg-card {
-  --seg-rx: 0deg;
-  --seg-ry: 0deg;
   position: relative;
   isolation: isolate;
   display: flex;
@@ -98,59 +92,18 @@ a { color: inherit; text-decoration: none; }
   gap: .75rem;
   padding: 1.75rem 1.5rem;
   background: var(--seg-cream);
-  border: 1px solid rgba(22, 53, 94, .1);
-  border-top: 4px solid var(--seg-yellow);
+  border: 1px solid rgba(22, 53, 94, .12);
   border-radius: 14px;
   box-shadow: 0 4px 14px rgba(22, 53, 94, .06);
-  transform: perspective(900px) rotateX(var(--seg-rx)) rotateY(var(--seg-ry));
-  transition: transform .35s cubic-bezier(.2, .7, .2, 1);
 }
 
-/* Sombra de hover en capa propia: se anima solo su opacidad */
-.seg-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  box-shadow: 0 18px 36px rgba(22, 53, 94, .16);
-  opacity: 0;
-  transition: opacity .35s ease;
-}
-
-/* Línea inferior amarilla que se dibuja */
-.seg-card::after {
-  content: "";
-  position: absolute;
-  left: 1.5rem;
-  right: 1.5rem;
-  bottom: 0;
-  height: 3px;
-  border-radius: 3px 3px 0 0;
-  background: var(--seg-yellow);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .45s cubic-bezier(.2, .7, .2, 1);
-}
-
-/* Reflejo diagonal */
+/* Capa decorativa recortada a la tarjeta (brillo y franja superior) */
 .seg-shine {
   position: absolute;
   inset: 0;
   overflow: hidden;
   border-radius: inherit;
   pointer-events: none;
-}
-
-.seg-shine::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: 0;
-  width: 45%;
-  height: 200%;
-  background: linear-gradient(90deg, transparent, rgba(242, 199, 68, .18), rgba(250, 250, 245, .55), transparent);
-  transform: translateX(-160%) rotate(20deg);
 }
 
 .seg-icon {
@@ -163,53 +116,9 @@ a { color: inherit; text-decoration: none; }
   background: var(--seg-navy);
   color: var(--seg-yellow);
   font-size: 1.35rem;
-  transition: transform .45s cubic-bezier(.34, 1.56, .64, 1);
-}
-
-/* Fondo amarillo del ícono: capa que aparece con opacidad */
-.seg-icon::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: var(--seg-yellow);
-  opacity: 0;
-  transform: scale(.6);
-  transition: opacity .3s ease, transform .3s ease;
 }
 
 .seg-icon i { position: relative; }
-
-@media (hover: hover) {
-  .seg-card:hover {
-    transform: perspective(900px) rotateX(var(--seg-rx)) rotateY(var(--seg-ry)) translateY(-6px);
-  }
-  .seg-card:hover::before { opacity: 1; }
-  .seg-card:hover::after { transform: scaleX(1); }
-  .seg-card:hover .seg-shine::before {
-    transform: translateX(320%) rotate(20deg);
-    transition: transform .9s ease;
-  }
-  .seg-card:hover .seg-icon { transform: rotate(-8deg) scale(1.08); }
-  .seg-card:hover .seg-icon::before { opacity: 1; transform: scale(1); }
-  .seg-card:hover .seg-icon i { color: var(--seg-navy); }
-}
-
-/* Durante el tilt el transform sigue al mouse sin retraso */
-.seg-card.seg-tilting { transition-duration: .12s; }
-
-/* Aparición al hacer scroll (la clase la agrega main.js) */
-.seg-reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
-}
-
-.seg-reveal.seg-visible { opacity: 1; transform: none; }
-
-.seg-card.seg-reveal:nth-child(2) { transition-delay: .12s; }
-.seg-card.seg-reveal:nth-child(3) { transition-delay: .24s; }
-.seg-card.seg-reveal:nth-child(4) { transition-delay: .36s; }
 
 .seg-card-title {
   color: var(--seg-navy);
@@ -222,20 +131,6 @@ a { color: inherit; text-decoration: none; }
   font-size: .95rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .seg-card,
-  .seg-card::before,
-  .seg-card::after,
-  .seg-icon,
-  .seg-icon::before,
-  .seg-shine::before,
-  .seg-reveal { transition: none !important; }
-  .seg-card,
-  .seg-card:hover,
-  .seg-card:hover .seg-icon { transform: none; }
-  .seg-shine { display: none; }
-  .seg-reveal { opacity: 1; }
-}
 @media (min-width: 768px) {
   .seg { padding: 5rem 0; }
   .seg-title { font-size: 2.1rem; }
@@ -859,3 +754,125 @@ a { color: inherit; text-decoration: none; }
   .footer-brand { grid-column: auto; }
 }
 /* === Fin Footer === */
+
+/* === Segmentos, CTA y Footer (Diego) === */
+/* Efectos y animaciones. El estado oculto inicial solo aplica con .js en <html>
+   (lo agrega diego-effects.js); sin JS todo el contenido queda visible. */
+
+/* ---------- Segmentos ---------- */
+.seg-card {
+  --seg-rx: 0deg;
+  --seg-ry: 0deg;
+  --seg-lift: 0px;
+  transform: perspective(900px) rotateX(var(--seg-rx)) rotateY(var(--seg-ry)) translateY(var(--seg-lift));
+  transition: transform .3s ease-out;
+}
+
+/* Sombra azul en capa propia: solo se anima su opacidad */
+.seg-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  box-shadow: 0 18px 36px rgba(22, 53, 94, .18);
+  opacity: 0;
+  transition: opacity .3s ease-out;
+}
+
+/* Borde superior amarillo que crece de 0 a 100% */
+.seg-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--seg-yellow);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .3s ease-out;
+}
+
+/* Reflejo diagonal que cruza la tarjeta */
+.seg-shine::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(242, 199, 68, .18), rgba(250, 250, 245, .55), transparent);
+  transform: translateX(-160%) rotate(20deg);
+}
+
+/* Fondo amarillo del ícono */
+.seg-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--seg-yellow);
+  opacity: 0;
+  transform: scale(.6);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.seg-icon i { transition: color .3s ease; }
+
+@media (hover: hover) {
+  .seg-card:hover { --seg-lift: -6px; }
+  .seg-card:hover::before { opacity: 1; }
+  .seg-card:hover .seg-shine::after { transform: scaleX(1); }
+  .seg-card:hover .seg-shine::before {
+    transform: translateX(320%) rotate(20deg);
+    transition: transform .9s ease;
+  }
+  .seg-card:hover .seg-icon { animation: seg-icon-bounce .4s ease-out; }
+  .seg-card:hover .seg-icon::before { opacity: 1; transform: scale(1); }
+  .seg-card:hover .seg-icon i { color: var(--seg-navy); }
+}
+
+/* Las tarjetas no son interactivas; si algún día contienen un enlace, el foco activa el mismo efecto */
+.seg-card:focus-within { --seg-lift: -6px; }
+.seg-card:focus-within::before { opacity: 1; }
+.seg-card:focus-within .seg-shine::after { transform: scaleX(1); }
+.seg-card:focus-within .seg-icon { animation: seg-icon-bounce .4s ease-out; }
+
+@keyframes seg-icon-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+/* Durante el tilt el transform sigue al mouse casi sin retraso */
+.seg-card.seg-tilting {
+  transition-duration: .1s;
+  will-change: transform;
+}
+
+/* Entrada escalonada (el retraso lo calcula diego-effects.js) */
+.js .seg-reveal:not(.seg-visible) { opacity: 0; }
+
+.seg-visible {
+  animation: seg-rise .6s cubic-bezier(.22, 1, .36, 1) backwards;
+  animation-delay: var(--seg-delay, 0ms);
+}
+
+@keyframes seg-rise {
+  from { opacity: 0; transform: translateY(24px); }
+}
+
+/* ---------- Movimiento reducido: todo en su estado final, sin animación ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .seg, .seg *, .seg *::before, .seg *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .seg-card { transform: none !important; }
+
+  .js .seg-reveal { opacity: 1; }
+
+  .seg-shine::before { display: none; }
+}
+/* === Fin Segmentos, CTA y Footer (Diego) === */
