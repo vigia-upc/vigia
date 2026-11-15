@@ -2933,3 +2933,7 @@ html.theme-transition *::after {
   .divider *::after { animation: none !important; }
 }
 /* === Fin divisores === */
+
+/* Desplegable de la lista de espera en modo oscuro: opciones legibles */
+[data-theme="dark"] select { color-scheme: dark; }
+[data-theme="dark"] select option { background-color: #13263f; color: #fafaf5; }
