@@ -14,7 +14,7 @@
 <body>
 
   <!-- feature/navbar: aquí va el navbar -->
-  <header class="navbar" id="inicio">
+  <header class="navbar">
     <div class="container navbar-inner">
       <a class="navbar-brand" href="#inicio" aria-label="Vigía - Ir al inicio">
         <img
@@ -28,20 +28,20 @@
 
       <nav class="navbar-nav" id="navbar-menu" aria-label="Navegación principal">
         <ul class="navbar-links">
-          <li><a class="navbar-link" href="#hero">Inicio</a></li>
+          <li><a class="navbar-link" href="#inicio">Inicio</a></li>
           <li><a class="navbar-link" href="#problema">Problema</a></li>
           <li><a class="navbar-link" href="#como-funciona">Cómo funciona</a></li>
           <li><a class="navbar-link" href="#caracteristicas">Características</a></li>
           <li><a class="navbar-link" href="#segmentos">Para quién es</a></li>
         </ul>
-        <a class="navbar-cta navbar-cta-mobile" href="#descargar">
+        <a class="navbar-cta navbar-cta-mobile" href="#cta">
           <i class="fa-solid fa-download" aria-hidden="true"></i>
           <span>Descargar app</span>
         </a>
       </nav>
 
       <div class="navbar-actions">
-        <a class="navbar-cta navbar-cta-desktop" href="#descargar">
+        <a class="navbar-cta navbar-cta-desktop" href="#cta">
           <i class="fa-solid fa-download" aria-hidden="true"></i>
           <span>Descargar app</span>
         </a>
@@ -70,15 +70,15 @@
         <div class="hero-content">
 
           <!-- LOGO PRINCIPAL -->
-          <div class="hero-logo">
+          <div class="hero-logo" data-reveal="hero">
             <img
-                    src="/assets/images/logo-vigia.png"
+                    src="assets/images/logo-vigia.png"
                     alt="Logo Vigía"
             >
           </div>
 
           <!-- TITULO -->
-          <h1>
+          <h1 data-reveal="hero">
             Reporta una amenaza
             de extorsión sin
             <span>exponerte.</span>
@@ -90,6 +90,7 @@
             <a
                     href="#"
                     class="hero-btn hero-btn-primary"
+                    data-reveal="hero"
                     data-store="google"
             >
               Google Play
@@ -98,6 +99,7 @@
             <a
                     href="#"
                     class="hero-btn hero-btn-secondary"
+                    data-reveal="hero"
                     data-store="apple"
             >
               App Store
@@ -108,12 +110,12 @@
         </div>
 
         <!-- LOGO ICONO COMO ELEMENTO VISUAL -->
-        <div class="hero-visual">
+        <div class="hero-visual" data-reveal="hero">
 
           <div class="hero-logo-decoration">
 
             <img
-                    src="/assets/images/logo-icono.png"
+                    src="assets/images/logo-icono.png"
                     alt="Icono de Vigía"
             >
 
@@ -131,19 +133,19 @@
      ========================================= -->
     <section id="problema" class="problema-section">
       <div class="container">
-        <h2 class="section-title">El Problema de la Extorsión</h2>
+        <h2 class="section-title" data-reveal="problema">El Problema de la Extorsión</h2>
         <div class="cards-grid">
-          <div class="card problema-card">
+          <div class="card problema-card" data-reveal="problema">
             <div class="card-icon">⚠️</div>
             <h3>Inseguridad Constante</h3>
             <p>Los comerciantes enfrentan amenazas diarias que ponen en riesgo su patrimonio y tranquilidad.</p>
           </div>
-          <div class="card problema-card">
+          <div class="card problema-card" data-reveal="problema">
             <div class="card-icon">🤫</div>
             <h3>Miedo a Denunciar</h3>
             <p>La falta de canales anónimos y seguros hace que muchas víctimas guarden silencio por temor.</p>
           </div>
-          <div class="card problema-card">
+          <div class="card problema-card" data-reveal="problema">
             <div class="card-icon">🏢</div>
             <h3>Falta de Apoyo</h3>
             <p>Los negocios se sienten aislados ante la delincuencia, sin una red comunitaria que los respalde.</p>
@@ -197,12 +199,12 @@
     <!-- feature/caracteristicas: aquí va la sección Características -->
 <section id="caracteristicas" class="caracteristicas-section">
         <div class="container">
-            <h2 class="section-title">Características Principales</h2>
-            <p class="section-subtitle">Conoce las herramientas diseñadas para proteger tu negocio</p>
+            <h2 class="section-title" data-reveal="carac">Características Principales</h2>
+            <p class="section-subtitle" data-reveal="carac">Conoce las herramientas diseñadas para proteger tu negocio</p>
             
             <div class="caracteristicas-grid">
                 <!-- Tarjeta 1 -->
-                <div class="caracteristica-card">
+                <div class="caracteristica-card" data-reveal="carac">
                     <div class="card-icon">
                         <i class="fa-solid fa-user-secret"></i>
                     </div>
@@ -211,7 +213,7 @@
                 </div>
 
                 <!-- Tarjeta 2 -->
-                <div class="caracteristica-card">
+                <div class="caracteristica-card" data-reveal="carac">
                     <div class="card-icon">
                         <i class="fa-solid fa-map-location-dot"></i>
                     </div>
@@ -220,7 +222,7 @@
                 </div>
 
                 <!-- Tarjeta 3 -->
-                <div class="caracteristica-card">
+                <div class="caracteristica-card" data-reveal="carac">
                     <div class="card-icon">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                     </div>
@@ -229,7 +231,7 @@
                 </div>
 
                 <!-- Tarjeta 4 -->
-                <div class="caracteristica-card">
+                <div class="caracteristica-card" data-reveal="carac">
                     <div class="card-icon">
                         <i class="fa-solid fa-users"></i>
                     </div>
@@ -377,7 +379,7 @@
       </div>
       <div class="container footer-inner">
         <div class="footer-brand" data-reveal="footer">
-          <a href="#hero" class="footer-logo-link" aria-label="Vigía, volver al inicio">
+          <a href="#inicio" class="footer-logo-link" aria-label="Vigía, volver al inicio">
             <span class="footer-logo-halo" aria-hidden="true"></span>
             <img src="assets/images/logo-vigia.png" alt="Logo de Vigía" class="footer-logo" width="1607" height="596">
           </a>
@@ -387,7 +389,7 @@
         <nav class="footer-nav" aria-label="Secciones del sitio" data-reveal="footer">
           <h2 class="footer-heading">Secciones</h2>
           <ul class="footer-list">
-            <li><a href="#hero" class="footer-link">Inicio</a></li>
+            <li><a href="#inicio" class="footer-link">Inicio</a></li>
             <li><a href="#problema" class="footer-link">Problema</a></li>
             <li><a href="#como-funciona" class="footer-link">Cómo funciona</a></li>
             <li><a href="#caracteristicas" class="footer-link">Características</a></li>

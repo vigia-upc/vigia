@@ -1,4 +1,4 @@
-/* === Segmentos, CTA y Footer: efectos visuales === */
+/* === Efectos visuales: Hero, Problema, Cómo funciona, Características, Segmentos, CTA y Footer === */
 (function () {
   'use strict';
 
@@ -8,7 +8,7 @@
   // El estado inicial oculto del CSS solo aplica con .js: sin JS todo queda visible
   root.classList.add('js');
 
-  /* --- Aparición al entrar en pantalla (data-reveal="seg|cta|footer") --- */
+  /* --- Aparición al entrar en pantalla (data-reveal="hero|problema|como|carac|seg|cta|footer") --- */
   if (!reducedMotion.matches && 'IntersectionObserver' in window) {
     var revealObserver = new IntersectionObserver(function (entries) {
       var order = {}; // posición dentro de este lote, por sección
@@ -75,4 +75,4 @@
     });
   }
 })();
-/* === Fin Segmentos, CTA y Footer === */
+/* === Fin efectos visuales === */
