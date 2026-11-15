@@ -293,17 +293,6 @@ a { color: inherit; text-decoration: none; }
   max-width: 600px;
 }
 
-/* LOGO */
-.hero-logo {
-  margin-bottom: 30px;
-}
-
-.hero-logo img {
-  width: 125px;
-  height: auto;
-  object-fit: contain;
-}
-
 /* TITULO */
 .hero-content h1 {
   color: var(--navy);
@@ -449,10 +438,6 @@ a { color: inherit; text-decoration: none; }
 
   .hero-content {
     margin: 0 auto;
-  }
-
-  .hero-logo img {
-    width: 115px;
   }
 
   .hero-content h1 {
@@ -2044,3 +2029,45 @@ html {
   .caracteristica-card::after { display: none; }
 }
 /* === Fin Hero, Problema, Cómo funciona y Características === */
+
+/* === Animaciones finales: Hero === */
+/* Título: las palabras suben una a una y "exponerte." se subraya en amarillo */
+.hero-word { display: inline-block; }
+
+.hero-highlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-highlight::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -.04em;
+  right: -.04em;
+  bottom: .06em;
+  height: .24em;
+  border-radius: .12em;
+  background: var(--yellow);
+  transform-origin: left center;
+}
+
+.hero-title.hero-visible { animation: none; }
+
+.hero-title.hero-visible .hero-word {
+  animation: hero-word-in .6s cubic-bezier(.22, 1, .36, 1) backwards;
+  animation-delay: calc(var(--hero-delay, 0ms) + var(--w, 0) * 80ms);
+}
+
+.hero-title.hero-visible .hero-highlight::after {
+  animation: hero-underline .55s cubic-bezier(.65, 0, .35, 1) backwards;
+  animation-delay: calc(var(--hero-delay, 0ms) + 800ms);
+}
+
+@keyframes hero-word-in {
+  from { opacity: 0; transform: translateY(.45em) rotate(2deg); }
+}
+
+@keyframes hero-underline {
+  from { transform: scaleX(0); }
+}
