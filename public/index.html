@@ -3,13 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
   <meta name="darkreader-lock">
   <title>Vigía | Reporte anónimo de extorsión</title>
   <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tema: se aplica antes de cargar el CSS para que no haya parpadeo.
+       Usa la elección guardada o, si no hay, la preferencia del sistema. -->
+  <script>
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem('vigia-theme'); } catch (e) {}
+      if (theme !== 'dark' && theme !== 'light') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
@@ -39,6 +51,12 @@
           <li><a class="navbar-link" href="#caracteristicas">Características</a></li>
           <li><a class="navbar-link" href="#segmentos">Para quién es</a></li>
         </ul>
+        <button class="theme-toggle theme-toggle-mobile" type="button" aria-label="Modo oscuro" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">
+            <i class="fa-solid fa-moon theme-moon"></i>
+            <i class="fa-solid fa-sun theme-sun"></i>
+          </span>
+        </button>
         <a class="navbar-cta navbar-cta-mobile" href="#cta">
           <i class="fa-solid fa-download" aria-hidden="true"></i>
           <span>Descargar app</span>
@@ -46,6 +64,13 @@
       </nav>
 
       <div class="navbar-actions">
+        <button class="theme-toggle theme-toggle-desktop" type="button" aria-label="Modo oscuro" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">
+            <i class="fa-solid fa-moon theme-moon"></i>
+            <i class="fa-solid fa-sun theme-sun"></i>
+          </span>
+        </button>
+
         <a class="navbar-cta navbar-cta-desktop" href="#cta">
           <i class="fa-solid fa-download" aria-hidden="true"></i>
           <span>Descargar app</span>
@@ -95,6 +120,12 @@
             <span class="hero-word hero-highlight" style="--w: 6">exponerte.</span>
           </h1>
 
+          <!-- DATO CLAVE (texto de la sección Cómo funciona) -->
+          <p class="hero-lead" data-reveal="hero">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <span>Todo el proceso toma menos de 30 segundos y no pide ningún dato personal.</span>
+          </p>
+
           <!-- BOTONES -->
           <div class="hero-buttons">
 
@@ -104,6 +135,7 @@
                     data-reveal="hero"
                     data-store="google"
             >
+              <i class="fa-brands fa-google-play" aria-hidden="true"></i>
               Google Play
             </a>
 
@@ -113,6 +145,7 @@
                     data-reveal="hero"
                     data-store="apple"
             >
+              <i class="fa-brands fa-apple" aria-hidden="true"></i>
               App Store
             </a>
 
@@ -158,12 +191,32 @@
 
       </div>
 
+      <!-- Indicador "desliza hacia abajo" -->
+      <a class="hero-scroll" href="#problema" aria-label="Desliza hacia abajo">
+        <span class="hero-scroll-mouse" aria-hidden="true"><span class="hero-scroll-wheel"></span></span>
+        <i class="fa-solid fa-chevron-down hero-scroll-arrow" aria-hidden="true"></i>
+      </a>
+
     </section>
 
     <!-- feature/problema: aquí va la sección Problema -->
     <!-- =========================================
      SECCIÓN: EL PROBLEMA (feature/problema)
      ========================================= -->
+    <!-- Divisor entre secciones (decorativo) -->
+    <div class="divider" data-reveal="divider" aria-hidden="true">
+      <span class="divider-line"></span>
+      <span class="divider-pin">
+        <svg viewBox="0 0 120 150" width="14" height="18" focusable="false">
+          <path class="hp-navy" d="M60 4C31.3 4 8 27.3 8 56c0 37 52 90 52 90s52-53 52-90C112 27.3 88.7 4 60 4Z"/>
+          <circle class="hp-cream" cx="60" cy="56" r="39"/>
+          <path class="hp-navy" d="M17 56Q60 14 103 56Q60 98 17 56Z"/>
+          <path class="hp-cream" d="M29 56Q60 27 91 56Q60 85 29 56Z"/>
+          <circle class="hp-navy" cx="60" cy="56" r="18"/>
+          <circle class="hp-yellow" cx="60" cy="56" r="12"/>
+        </svg>
+      </span>
+    </div>
     <section id="problema" class="problema-section">
       <div class="container">
         <h2 class="section-title" data-reveal="problema">El Problema de la Extorsión</h2>
@@ -219,7 +272,21 @@
       </div>
     </section>
     <!-- feature/como-funciona: aquí va la sección Cómo funciona -->
-        <section id="como-funciona" class="como" aria-labelledby="como-title">
+    <!-- Divisor entre secciones (decorativo) -->
+    <div class="divider" data-reveal="divider" aria-hidden="true">
+      <span class="divider-line"></span>
+      <span class="divider-pin">
+        <svg viewBox="0 0 120 150" width="14" height="18" focusable="false">
+          <path class="hp-navy" d="M60 4C31.3 4 8 27.3 8 56c0 37 52 90 52 90s52-53 52-90C112 27.3 88.7 4 60 4Z"/>
+          <circle class="hp-cream" cx="60" cy="56" r="39"/>
+          <path class="hp-navy" d="M17 56Q60 14 103 56Q60 98 17 56Z"/>
+          <path class="hp-cream" d="M29 56Q60 27 91 56Q60 85 29 56Z"/>
+          <circle class="hp-navy" cx="60" cy="56" r="18"/>
+          <circle class="hp-yellow" cx="60" cy="56" r="12"/>
+        </svg>
+      </span>
+    </div>
+    <section id="como-funciona" class="como" aria-labelledby="como-title">
       <div class="container">
         <header class="section-header" data-reveal="como">
           <p class="section-eyebrow"><span class="live-dot" aria-hidden="true"></span>Cómo funciona</p>
@@ -262,7 +329,21 @@
 
 
     <!-- feature/caracteristicas: aquí va la sección Características -->
-<section id="caracteristicas" class="caracteristicas-section">
+    <!-- Divisor entre secciones (decorativo) -->
+    <div class="divider" data-reveal="divider" aria-hidden="true">
+      <span class="divider-line"></span>
+      <span class="divider-pin">
+        <svg viewBox="0 0 120 150" width="14" height="18" focusable="false">
+          <path class="hp-navy" d="M60 4C31.3 4 8 27.3 8 56c0 37 52 90 52 90s52-53 52-90C112 27.3 88.7 4 60 4Z"/>
+          <circle class="hp-cream" cx="60" cy="56" r="39"/>
+          <path class="hp-navy" d="M17 56Q60 14 103 56Q60 98 17 56Z"/>
+          <path class="hp-cream" d="M29 56Q60 27 91 56Q60 85 29 56Z"/>
+          <circle class="hp-navy" cx="60" cy="56" r="18"/>
+          <circle class="hp-yellow" cx="60" cy="56" r="12"/>
+        </svg>
+      </span>
+    </div>
+    <section id="caracteristicas" class="caracteristicas-section">
       <!-- Separadores con onda (decorativos) -->
       <div class="section-wave section-wave-top" aria-hidden="true">
         <svg viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
@@ -320,6 +401,20 @@
     <!-- feature/segmentos-footer: aquí va Segmentos, CTA y footer -->
 
     <!-- === Segmentos === -->
+    <!-- Divisor entre secciones (decorativo) -->
+    <div class="divider" data-reveal="divider" aria-hidden="true">
+      <span class="divider-line"></span>
+      <span class="divider-pin">
+        <svg viewBox="0 0 120 150" width="14" height="18" focusable="false">
+          <path class="hp-navy" d="M60 4C31.3 4 8 27.3 8 56c0 37 52 90 52 90s52-53 52-90C112 27.3 88.7 4 60 4Z"/>
+          <circle class="hp-cream" cx="60" cy="56" r="39"/>
+          <path class="hp-navy" d="M17 56Q60 14 103 56Q60 98 17 56Z"/>
+          <path class="hp-cream" d="M29 56Q60 27 91 56Q60 85 29 56Z"/>
+          <circle class="hp-navy" cx="60" cy="56" r="18"/>
+          <circle class="hp-yellow" cx="60" cy="56" r="12"/>
+        </svg>
+      </span>
+    </div>
     <section id="segmentos" class="seg" aria-labelledby="seg-title">
       <div class="container">
         <header class="seg-header" data-reveal="seg">
@@ -359,6 +454,20 @@
     <!-- === Fin Segmentos === -->
 
     <!-- === CTA === -->
+    <!-- Divisor entre secciones (decorativo) -->
+    <div class="divider" data-reveal="divider" aria-hidden="true">
+      <span class="divider-line"></span>
+      <span class="divider-pin">
+        <svg viewBox="0 0 120 150" width="14" height="18" focusable="false">
+          <path class="hp-navy" d="M60 4C31.3 4 8 27.3 8 56c0 37 52 90 52 90s52-53 52-90C112 27.3 88.7 4 60 4Z"/>
+          <circle class="hp-cream" cx="60" cy="56" r="39"/>
+          <path class="hp-navy" d="M17 56Q60 14 103 56Q60 98 17 56Z"/>
+          <path class="hp-cream" d="M29 56Q60 27 91 56Q60 85 29 56Z"/>
+          <circle class="hp-navy" cx="60" cy="56" r="18"/>
+          <circle class="hp-yellow" cx="60" cy="56" r="12"/>
+        </svg>
+      </span>
+    </div>
     <section id="cta" class="cta" aria-labelledby="cta-title">
       <div class="section-wave section-wave-top" aria-hidden="true">
         <svg viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">

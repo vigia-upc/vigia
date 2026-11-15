@@ -8,7 +8,7 @@
   // El estado inicial oculto del CSS solo aplica con .js: sin JS todo queda visible
   root.classList.add('js');
 
-  /* --- Aparición al entrar en pantalla (data-reveal="hero|problema|como|carac|seg|cta|footer") --- */
+  /* --- Aparición al entrar en pantalla (data-reveal="hero|problema|como|carac|seg|cta|footer|divider") --- */
   if (!reducedMotion.matches && 'IntersectionObserver' in window) {
     var revealObserver = new IntersectionObserver(function (entries) {
       var order = {}; // posición dentro de este lote, por sección

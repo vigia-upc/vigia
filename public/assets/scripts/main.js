@@ -254,3 +254,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+/* === Tema claro / oscuro === */
+(() => {
+  const root = document.documentElement;
+  const STORAGE_KEY = 'vigia-theme';
+  const toggles = document.querySelectorAll('.theme-toggle');
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let transitionTimer = 0;
+
+  const readSaved = () => {
+    try { return localStorage.getItem(STORAGE_KEY); } catch (error) { return null; }
+  };
+
+  const syncButtons = () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    toggles.forEach((button) => button.setAttribute('aria-pressed', String(isDark)));
+  };
+
+  const applyTheme = (theme, animate) => {
+    // Transición suave de colores solo durante el cambio (no interfiere con otras animaciones)
+    if (animate && !reducedMotion.matches) {
+      root.classList.add('theme-transition');
+      window.clearTimeout(transitionTimer);
+      transitionTimer = window.setTimeout(() => root.classList.remove('theme-transition'), 500);
+    }
+    root.setAttribute('data-theme', theme);
+    syncButtons();
+  };
+
+  if (!root.hasAttribute('data-theme')) {
+    root.setAttribute('data-theme', systemDark.matches ? 'dark' : 'light');
+  }
+  syncButtons();
+
+  toggles.forEach((button) => {
+    button.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next, true);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (error) { /* modo privado: no se guarda */ }
+    });
+  });
+
+  // Si el usuario nunca eligió, sigue los cambios del sistema
+  systemDark.addEventListener('change', (event) => {
+    if (!readSaved()) applyTheme(event.matches ? 'dark' : 'light', true);
+  });
+})();
+/* === Fin tema claro / oscuro === */
