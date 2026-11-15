@@ -1297,3 +1297,37 @@ html {
   box-shadow: 0 4px 15px rgba(22, 53, 94, 0.08);
   text-align: center;
 }
+/* =========================================
+   SECCIÓN: PROBLEMA (Detalles y Hover)
+   ========================================= */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(22, 53, 94, 0.15);
+}
+
+.problema-card {
+  border-top: 5px solid #f2c744;
+}
+
+.card-icon {
+  background-color: #16355e;
+  color: #ffffff;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  font-size: 2rem;
+}
+
+.card h3 {
+  color: #16355e;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
