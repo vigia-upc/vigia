@@ -69,6 +69,170 @@
     <!-- feature/caracteristicas: aquí va la sección Características -->
 
     <!-- feature/segmentos-footer: aquí va Segmentos, CTA y footer -->
+
+    <!-- === Segmentos === -->
+    <section id="segmentos" class="seg" aria-labelledby="seg-title">
+      <div class="container">
+        <header class="seg-header" data-reveal="seg">
+          <p class="seg-eyebrow">¿Para quién es Vigía?</p>
+          <h2 id="seg-title" class="seg-title">Una herramienta para todo el barrio</h2>
+          <p class="seg-lead">Cada persona aporta y recibe algo distinto. Juntos convertimos el miedo en información.</p>
+        </header>
+
+        <ul class="seg-grid">
+          <li class="seg-card" data-reveal="seg">
+            <span class="seg-shine" aria-hidden="true"></span>
+            <span class="seg-icon" aria-hidden="true"><i class="fa-solid fa-store"></i></span>
+            <h3 class="seg-card-title">Comerciantes y bodegueros</h3>
+            <p class="seg-card-text">Reportan una extorsión en menos de 30 segundos, sin dar nombre, DNI ni teléfono.</p>
+          </li>
+          <li class="seg-card" data-reveal="seg">
+            <span class="seg-shine" aria-hidden="true"></span>
+            <span class="seg-icon" aria-hidden="true"><i class="fa-solid fa-people-group"></i></span>
+            <h3 class="seg-card-title">Dirigentes de asociaciones y gremios</h3>
+            <p class="seg-card-text">Acceden a un dashboard con datos por zona para gestionar su seguridad y sustentar denuncias.</p>
+          </li>
+          <li class="seg-card" data-reveal="seg">
+            <span class="seg-shine" aria-hidden="true"></span>
+            <span class="seg-icon" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></span>
+            <h3 class="seg-card-title">Nuevos emprendedores</h3>
+            <p class="seg-card-text">Conocen el nivel de riesgo de la zona antes de invertir y abrir su negocio.</p>
+          </li>
+          <li class="seg-card" data-reveal="seg">
+            <span class="seg-shine" aria-hidden="true"></span>
+            <span class="seg-icon" aria-hidden="true"><i class="fa-solid fa-house-chimney-user"></i></span>
+            <h3 class="seg-card-title">Vecinos</h3>
+            <p class="seg-card-text">Reciben alertas y forman parte de una comunidad para cuidarse entre todos.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- === Fin Segmentos === -->
+
+    <!-- === CTA === -->
+    <section id="cta" class="cta" aria-labelledby="cta-title">
+      <div class="cta-bg" aria-hidden="true">
+        <span class="cta-glow"></span>
+        <span class="cta-shape cta-shape-1"></span>
+        <span class="cta-shape cta-shape-2"></span>
+        <span class="cta-shape cta-shape-3"></span>
+      </div>
+      <div class="container cta-inner">
+        <div class="cta-copy" data-reveal="cta">
+          <h2 id="cta-title" class="cta-title">Rompe el silencio sin exponerte</h2>
+          <p class="cta-text">Sé de los primeros en usar Vigía en tu distrito. Te avisaremos cuando la app esté disponible.</p>
+          <ul class="cta-points">
+            <li><i class="fa-solid fa-user-secret" aria-hidden="true"></i> No pedimos tu nombre real</li>
+            <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Tu correo solo se usa para avisarte del lanzamiento</li>
+            <li><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> Gratis para comerciantes y vecinos</li>
+          </ul>
+        </div>
+
+        <form id="cta-form" class="cta-form" data-reveal="cta" novalidate aria-labelledby="cta-form-title">
+          <h3 id="cta-form-title" class="cta-form-title">Únete a la lista de espera</h3>
+
+          <div class="cta-field">
+            <label for="cta-alias" class="cta-label">Nombre o alias <span class="cta-optional">(opcional)</span></label>
+            <div class="cta-control">
+              <input type="text" id="cta-alias" name="alias" class="cta-input" autocomplete="nickname" maxlength="40" placeholder="Ej. Bodega Doña Rosa">
+            </div>
+          </div>
+
+          <div class="cta-field">
+            <label for="cta-email" class="cta-label">Correo electrónico</label>
+            <div class="cta-control">
+              <input type="email" id="cta-email" name="email" class="cta-input" autocomplete="email" required aria-describedby="cta-email-error" placeholder="tucorreo@ejemplo.com">
+            </div>
+            <p id="cta-email-error" class="cta-error" aria-live="polite"></p>
+          </div>
+
+          <div class="cta-field">
+            <label for="cta-tipo" class="cta-label">Tipo de usuario</label>
+            <div class="cta-control">
+              <select id="cta-tipo" name="tipo" class="cta-input" required aria-describedby="cta-tipo-error">
+                <option value="">Selecciona una opción</option>
+                <option value="comerciante">Comerciante o bodeguero</option>
+                <option value="dirigente">Dirigente de asociación o gremio</option>
+                <option value="emprendedor">Nuevo emprendedor</option>
+                <option value="vecino">Vecino</option>
+              </select>
+            </div>
+            <p id="cta-tipo-error" class="cta-error" aria-live="polite"></p>
+          </div>
+
+          <div class="cta-field">
+            <label for="cta-distrito" class="cta-label">Distrito</label>
+            <div class="cta-control">
+              <input type="text" id="cta-distrito" name="distrito" class="cta-input" required aria-describedby="cta-distrito-error" maxlength="60" placeholder="Ej. San Juan de Lurigancho">
+            </div>
+            <p id="cta-distrito-error" class="cta-error" aria-live="polite"></p>
+          </div>
+
+          <button type="submit" class="cta-btn">
+            <span class="cta-btn-label">Quiero unirme</span>
+            <i class="fa-solid fa-paper-plane cta-btn-icon" aria-hidden="true"></i>
+            <i class="fa-solid fa-circle-notch cta-btn-spinner" aria-hidden="true"></i>
+          </button>
+
+          <div class="cta-status" role="status" aria-live="polite">
+            <span class="cta-check" aria-hidden="true"><span class="cta-check-short"></span><span class="cta-check-long"></span></span>
+            <p id="cta-status" class="cta-status-text"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- === Fin CTA === -->
+
+    <!-- === Footer === -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-wave" aria-hidden="true">
+        <svg class="footer-wave-svg" viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
+          <path d="M0 20 Q 180 4 360 20 T 720 20 T 1080 20 T 1440 20 T 1800 20 T 2160 20 T 2520 20 T 2880 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </div>
+      <div class="container footer-inner">
+        <div class="footer-brand" data-reveal="footer">
+          <a href="#hero" class="footer-logo-link" aria-label="Vigía, volver al inicio">
+            <img src="assets/images/logo-vigia.png" alt="Logo de Vigía" class="footer-logo" width="1607" height="596">
+          </a>
+          <p class="footer-tagline">Reporte anónimo de extorsión para comerciantes de Lima.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Secciones del sitio" data-reveal="footer">
+          <h2 class="footer-heading">Secciones</h2>
+          <ul class="footer-list">
+            <li><a href="#hero" class="footer-link">Inicio</a></li>
+            <li><a href="#problema" class="footer-link">Problema</a></li>
+            <li><a href="#como-funciona" class="footer-link">Cómo funciona</a></li>
+            <li><a href="#caracteristicas" class="footer-link">Características</a></li>
+            <li><a href="#segmentos" class="footer-link">Segmentos</a></li>
+            <li><a href="#cta" class="footer-link">Lista de espera</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-team" data-reveal="footer">
+          <h2 class="footer-heading">Equipo</h2>
+          <ul class="footer-list">
+            <li>Diego Avalos</li>
+            <li>Miguel Jara</li>
+            <li>Aaron</li>
+            <li>Jose</li>
+            <li>Marlon</li>
+            <li>André</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>Proyecto académico UPC, curso 1ASI0385</p>
+        <p>&copy; <span id="footer-year">2026</span> Vigía</p>
+      </div>
+
+      <button type="button" id="footer-top" class="footer-top" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+      </button>
+    </footer>
+    <!-- === Fin Footer === -->
   </main>
 
   <script src="assets/scripts/main.js"></script>
