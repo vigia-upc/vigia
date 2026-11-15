@@ -1616,3 +1616,66 @@ html {
   font-size: 1.3rem;
   margin-bottom: 1rem;
 }
+
+/* Andre */
+.caracteristicas-section {
+    background-color: #fafaf5; 
+    padding: 60px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.caracteristicas-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.caracteristicas-section .section-title {
+    color: #16355e; 
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.caracteristicas-section .section-subtitle {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 40px;
+}
+
+.caracteristicas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.caracteristica-card {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(22, 53, 94, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid #f2c744; 
+}
+
+.caracteristica-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(22, 53, 94, 0.15);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: #16355e; 
+    margin-bottom: 20px;
+}
+
+.caracteristica-card h3 {
+    color: #16355e;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.caracteristica-card p {
+    color: #666;
+    font-size: 0.90rem;
+    line-height: 1.5;
+} 
