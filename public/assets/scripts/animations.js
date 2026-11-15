@@ -83,7 +83,8 @@
       comoItems.forEach(function (item) {
         var num = item.querySelector('.como-num').getBoundingClientRect();
         var center = wide ? num.left + num.width / 2 : num.top + num.height / 2;
-        var reachedAt = (center - start) / length;
+        // Por el gap de la grilla, el último número puede quedar unos px después del final de la línea
+        var reachedAt = Math.min(1, (center - start) / length);
         item.classList.toggle('is-active', progress > 0 && progress >= reachedAt - 0.01);
       });
     });
