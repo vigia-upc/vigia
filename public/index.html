@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="darkreader-lock">
   <title>Vigía | Reporte anónimo de extorsión</title>
   <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +14,9 @@
   <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 <body>
+
+  <!-- Barra de progreso de lectura (decorativa) -->
+  <div class="read-progress" aria-hidden="true"></div>
 
   <!-- feature/navbar: aquí va el navbar -->
   <header class="navbar">
@@ -64,24 +69,30 @@
 
     <section class="hero" id="inicio">
 
+      <!-- Fondo: puntos tipo mapa de calor (decorativo) -->
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-heat hero-heat-1"></span>
+        <span class="hero-heat hero-heat-2"></span>
+        <span class="hero-heat hero-heat-3"></span>
+        <span class="hero-heat hero-heat-4"></span>
+        <span class="hero-heat hero-heat-5"></span>
+        <span class="hero-heat hero-heat-6"></span>
+      </div>
+
       <div class="hero-container">
 
         <!-- CONTENIDO PRINCIPAL -->
         <div class="hero-content">
 
-          <!-- LOGO PRINCIPAL -->
-          <div class="hero-logo" data-reveal="hero">
-            <img
-                    src="assets/images/logo-vigia.png"
-                    alt="Logo Vigía"
-            >
-          </div>
-
-          <!-- TITULO -->
-          <h1 data-reveal="hero">
-            Reporta una amenaza
-            de extorsión sin
-            <span>exponerte.</span>
+          <!-- TITULO: cada palabra entra por separado (--w = orden) -->
+          <h1 class="hero-title" data-reveal="hero">
+            <span class="hero-word" style="--w: 0">Reporta</span>
+            <span class="hero-word" style="--w: 1">una</span>
+            <span class="hero-word" style="--w: 2">amenaza</span>
+            <span class="hero-word" style="--w: 3">de</span>
+            <span class="hero-word" style="--w: 4">extorsión</span>
+            <span class="hero-word" style="--w: 5">sin</span>
+            <span class="hero-word hero-highlight" style="--w: 6">exponerte.</span>
           </h1>
 
           <!-- BOTONES -->
@@ -114,10 +125,32 @@
 
           <div class="hero-logo-decoration">
 
-            <img
-                    src="assets/images/logo-icono.png"
-                    alt="Icono de Vigía"
-            >
+            <!-- Ondas de radar que salen del anillo amarillo -->
+            <span class="hero-radar" aria-hidden="true"></span>
+            <span class="hero-radar hero-radar-2" aria-hidden="true"></span>
+
+            <!-- Pin de Vigía en SVG: el ojo parpadea y el iris sigue al mouse -->
+            <svg class="hero-pin" viewBox="0 0 120 150" width="150" height="188" role="img" aria-label="Icono de Vigía">
+              <defs>
+                <clipPath id="hero-eye-clip">
+                  <path d="M17 56Q60 14 103 56Q60 98 17 56Z"/>
+                </clipPath>
+              </defs>
+              <path class="hp-navy" d="M60 4C31.3 4 8 27.3 8 56c0 37 52 90 52 90s52-53 52-90C112 27.3 88.7 4 60 4Z"/>
+              <circle class="hp-cream" cx="60" cy="56" r="39"/>
+              <g class="hero-eye">
+                <path class="hp-navy" d="M17 56Q60 14 103 56Q60 98 17 56Z"/>
+                <path class="hp-cream" d="M29 56Q60 27 91 56Q60 85 29 56Z"/>
+                <g clip-path="url(#hero-eye-clip)">
+                  <g class="hero-iris">
+                    <circle class="hp-navy" cx="60" cy="56" r="18"/>
+                    <circle class="hp-cream" cx="60" cy="56" r="14"/>
+                    <circle class="hp-yellow" cx="60" cy="56" r="10.5"/>
+                    <circle class="hp-cream" cx="64.5" cy="51.5" r="3"/>
+                  </g>
+                </g>
+              </g>
+            </svg>
 
           </div>
 
@@ -136,17 +169,49 @@
         <h2 class="section-title" data-reveal="problema">El Problema de la Extorsión</h2>
         <div class="cards-grid">
           <div class="card problema-card" data-reveal="problema">
-            <div class="card-icon">⚠️</div>
+            <div class="card-icon" aria-hidden="true">
+              <!-- Amenaza: señal de alerta -->
+              <svg class="pi pi-alert" viewBox="0 0 48 48" focusable="false">
+                <path class="pi-fill pi-yellow" d="M24 8 42 39H6Z"/>
+                <path class="pi-draw" pathLength="1" d="M24 8 42 39H6Z"/>
+                <path class="pi-draw pi-alert-mark" pathLength="1" d="M24 19v10"/>
+                <circle class="pi-fill pi-navy pi-alert-mark" cx="24" cy="34" r="2"/>
+              </svg>
+            </div>
             <h3>Inseguridad Constante</h3>
             <p>Los comerciantes enfrentan amenazas diarias que ponen en riesgo su patrimonio y tranquilidad.</p>
           </div>
           <div class="card problema-card" data-reveal="problema">
-            <div class="card-icon">🤫</div>
+            <div class="card-icon" aria-hidden="true">
+              <!-- Silencio: boca cerrada con candado -->
+              <svg class="pi pi-silence" viewBox="0 0 48 48" focusable="false">
+                <path class="pi-draw" pathLength="1" d="M6 22c4-6 9-8 12-5 2 2 4 2 6 0 3-3 8-1 12 5-5 8-10 11-15 11S11 30 6 22Z"/>
+                <path class="pi-draw" pathLength="1" d="M8 22c6 2.5 13 3.5 20 2.5"/>
+                <g class="pi-lock">
+                  <path class="pi-draw pi-shackle" pathLength="1" d="M31 30v-4a5 5 0 0 1 10 0v4"/>
+                  <rect class="pi-fill pi-yellow" x="28" y="30" width="16" height="12" rx="2.5"/>
+                  <rect class="pi-draw" pathLength="1" x="28" y="30" width="16" height="12" rx="2.5"/>
+                  <path class="pi-draw" pathLength="1" d="M36 34.5v3"/>
+                </g>
+              </svg>
+            </div>
             <h3>Miedo a Denunciar</h3>
             <p>La falta de canales anónimos y seguros hace que muchas víctimas guarden silencio por temor.</p>
           </div>
           <div class="card problema-card" data-reveal="problema">
-            <div class="card-icon">🏢</div>
+            <div class="card-icon" aria-hidden="true">
+              <!-- Negocio aislado: tienda sola dentro de un círculo vacío -->
+              <svg class="pi pi-shop" viewBox="0 0 48 48" focusable="false">
+                <circle class="pi-ring" cx="24" cy="24" r="21"/>
+                <g class="pi-store">
+                  <path class="pi-draw" pathLength="1" d="M15 23v12h18V23"/>
+                  <path class="pi-fill pi-yellow" d="M12 21l3-7h18l3 7v1.5q-3 3-6 0-3 3-6 0-3 3-6 0-3 3-6 0Z"/>
+                  <path class="pi-draw" pathLength="1" d="M12 21l3-7h18l3 7v1.5q-3 3-6 0-3 3-6 0-3 3-6 0-3 3-6 0Z"/>
+                  <path class="pi-draw" pathLength="1" d="M21 35v-7h6v7"/>
+                </g>
+                <path class="pi-draw" pathLength="1" d="M9 35h30"/>
+              </svg>
+            </div>
             <h3>Falta de Apoyo</h3>
             <p>Los negocios se sienten aislados ante la delincuencia, sin una red comunitaria que los respalde.</p>
           </div>
@@ -157,9 +222,9 @@
         <section id="como-funciona" class="como" aria-labelledby="como-title">
       <div class="container">
         <header class="section-header" data-reveal="como">
-          <p class="section-eyebrow">Cómo funciona</p>
+          <p class="section-eyebrow"><span class="live-dot" aria-hidden="true"></span>Cómo funciona</p>
           <h2 id="como-title" class="section-title">De la amenaza al reporte, en tres pasos</h2>
-          <p class="section-subtitle">Todo el proceso toma menos de 30 segundos y no pide ningún dato personal.</p>
+          <p class="section-subtitle">Todo el proceso toma menos de <span class="count-up" data-count="30">30</span> segundos y no pide ningún dato personal.</p>
         </header>
 
         <ol class="como-steps" id="como-steps">
@@ -198,6 +263,12 @@
 
     <!-- feature/caracteristicas: aquí va la sección Características -->
 <section id="caracteristicas" class="caracteristicas-section">
+      <!-- Separadores con onda (decorativos) -->
+      <div class="section-wave section-wave-top" aria-hidden="true">
+        <svg viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
+          <path d="M0 0H2880V20Q2700 36 2520 20T2160 20T1800 20T1440 20T1080 20T720 20T360 20T0 20Z" fill="currentColor"/>
+        </svg>
+      </div>
         <div class="container">
             <h2 class="section-title" data-reveal="carac">Características Principales</h2>
             <p class="section-subtitle" data-reveal="carac">Conoce las herramientas diseñadas para proteger tu negocio</p>
@@ -209,7 +280,7 @@
                         <i class="fa-solid fa-user-secret"></i>
                     </div>
                     <h3>Reporte Anónimo</h3>
-                    <p>Informa sobre amenazas de extorsión en menos de 30 segundos sin revelar tu identidad ni datos personales.</p>
+                    <p>Informa sobre amenazas de extorsión en menos de <span class="count-up" data-count="30">30</span> segundos sin revelar tu identidad ni datos personales.</p>
                 </div>
 
                 <!-- Tarjeta 2 -->
@@ -240,6 +311,11 @@
                 </div>
             </div>
         </div>
+      <div class="section-wave section-wave-bottom" aria-hidden="true">
+        <svg viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
+          <path d="M0 0H2880V20Q2700 36 2520 20T2160 20T1800 20T1440 20T1080 20T720 20T360 20T0 20Z" fill="currentColor"/>
+        </svg>
+      </div>
     </section>
     <!-- feature/segmentos-footer: aquí va Segmentos, CTA y footer -->
 
@@ -247,7 +323,7 @@
     <section id="segmentos" class="seg" aria-labelledby="seg-title">
       <div class="container">
         <header class="seg-header" data-reveal="seg">
-          <p class="seg-eyebrow">¿Para quién es Vigía?</p>
+          <p class="seg-eyebrow"><span class="live-dot" aria-hidden="true"></span>¿Para quién es Vigía?</p>
           <h2 id="seg-title" class="seg-title">Una herramienta para todo el barrio</h2>
           <p class="seg-lead">Cada persona aporta y recibe algo distinto. Juntos convertimos el miedo en información.</p>
         </header>
@@ -284,6 +360,11 @@
 
     <!-- === CTA === -->
     <section id="cta" class="cta" aria-labelledby="cta-title">
+      <div class="section-wave section-wave-top" aria-hidden="true">
+        <svg viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
+          <path d="M0 0H2880V20Q2700 36 2520 20T2160 20T1800 20T1440 20T1080 20T720 20T360 20T0 20Z" fill="currentColor"/>
+        </svg>
+      </div>
       <div class="cta-bg" aria-hidden="true">
         <span class="cta-glow"></span>
         <span class="cta-shape cta-shape-1"></span>
