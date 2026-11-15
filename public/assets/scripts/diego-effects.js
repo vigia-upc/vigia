@@ -8,7 +8,7 @@
   // El estado inicial oculto del CSS solo aplica con .js: sin JS todo queda visible
   root.classList.add('js');
 
-  /* --- Aparición al entrar en pantalla (data-reveal="seg|cta") --- */
+  /* --- Aparición al entrar en pantalla (data-reveal="seg|cta|footer") --- */
   if (!reducedMotion.matches && 'IntersectionObserver' in window) {
     var revealObserver = new IntersectionObserver(function (entries) {
       var order = {}; // posición dentro de este lote, por sección
@@ -26,7 +26,7 @@
       });
     }, { threshold: 0.2 });
 
-    Array.prototype.forEach.call(document.querySelectorAll('[data-reveal="seg"], [data-reveal="cta"]'), function (el) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-reveal]'), function (el) {
       el.classList.add(el.getAttribute('data-reveal') + '-reveal');
       revealObserver.observe(el);
     });
@@ -66,5 +66,13 @@
       card.style.removeProperty('--seg-ry');
     });
   });
+
+  /* --- Footer: botón volver arriba con scroll suave --- */
+  var topBtn = document.getElementById('footer-top');
+  if (topBtn) {
+    topBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+    });
+  }
 })();
 /* === Fin Segmentos, CTA y Footer (Diego) === */
