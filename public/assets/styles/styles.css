@@ -32,6 +32,43 @@ a { color: inherit; text-decoration: none; }
   scroll-margin-top: 4rem;
 }
 
+/* Encabezado: mismo estilo que el de Segmentos (.seg-header) */
+.como .section-header {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.como .section-eyebrow {
+  display: inline-block;
+  margin-bottom: .5rem;
+  padding: .25rem .75rem;
+  border-radius: 999px;
+  background: rgba(242, 199, 68, .25);
+  color: var(--navy);
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.como .section-title {
+  color: var(--navy);
+  font-size: 1.75rem;
+  line-height: 1.25;
+  margin-bottom: .75rem;
+}
+
+.como .section-title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: .75rem auto 0;
+  border-radius: 2px;
+  background: var(--yellow);
+}
+
+.como .section-subtitle { color: rgba(22, 53, 94, .78); }
+
 .como-steps {
   position: relative;
   list-style: none;
@@ -204,6 +241,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (min-width: 768px) {
   .como { padding: 5rem 0; }
+  .como .section-title { font-size: 2.1rem; }
 
   .como-steps {
     grid-template-columns: repeat(3, 1fr);
@@ -238,6 +276,10 @@ a { color: inherit; text-decoration: none; }
   }
 
   .como-icon { margin-inline: auto; }
+}
+
+@media (min-width: 1024px) {
+  .como .section-title { font-size: 2.4rem; }
 }
 /* === Fin feature/como-funciona === */
 
