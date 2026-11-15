@@ -32,6 +32,65 @@
     });
   }
 
+  /* --- Bucle de scroll compartido: un solo requestAnimationFrame por frame --- */
+  var scrollTasks = [];
+  var scrollFrame = 0;
+
+  var runScrollTasks = function () {
+    scrollFrame = 0;
+    scrollTasks.forEach(function (task) { task(); });
+  };
+
+  var requestScrollTasks = function () {
+    if (!scrollFrame) scrollFrame = window.requestAnimationFrame(runScrollTasks);
+  };
+
+  window.addEventListener('scroll', requestScrollTasks, { passive: true });
+  window.addEventListener('resize', requestScrollTasks);
+
+  /* --- Cómo funciona: la línea se llena al hacer scroll y los números hacen pop --- */
+  var comoSteps = document.getElementById('como-steps');
+
+  if (comoSteps && !reducedMotion.matches) {
+    var comoItems = Array.prototype.slice.call(comoSteps.querySelectorAll('.como-step'));
+    var comoWide = window.matchMedia('(min-width: 768px)');
+    comoSteps.classList.add('como-scroll');
+
+    scrollTasks.push(function () {
+      var rect = comoSteps.getBoundingClientRect();
+      var vh = window.innerHeight;
+      if (rect.bottom < -vh || rect.top > vh * 2) return; // lejos de pantalla
+
+      var wide = comoWide.matches;
+      var inset = parseFloat(getComputedStyle(root).fontSize) * 1.75; // 1.75rem, igual que en el CSS
+      var start, length, progress;
+
+      if (wide) {
+        // Horizontal: de 16.66% a 83.34% del ancho; se llena mientras la fila sube del 85% al 40% de la pantalla
+        start = rect.left + rect.width * 0.1666;
+        length = rect.width * 0.6668;
+        progress = (vh * 0.85 - rect.top) / (vh * 0.45);
+      } else {
+        // Vertical: avanza con una "línea de lectura" al 60% de la pantalla
+        start = rect.top + inset;
+        length = rect.height - inset * 2;
+        progress = (vh * 0.6 - start) / length;
+      }
+
+      progress = Math.max(0, Math.min(1, progress));
+      comoSteps.style.setProperty('--como-p', progress.toFixed(3));
+
+      comoItems.forEach(function (item) {
+        var num = item.querySelector('.como-num').getBoundingClientRect();
+        var center = wide ? num.left + num.width / 2 : num.top + num.height / 2;
+        var reachedAt = (center - start) / length;
+        item.classList.toggle('is-active', progress > 0 && progress >= reachedAt - 0.01);
+      });
+    });
+  }
+
+  requestScrollTasks();
+
   /* --- Segmentos: tilt 3D sutil con el mouse (solo dispositivos con mouse) --- */
   var tiltQuery = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 768px)');
   var maxTilt = 6; // grados

@@ -179,26 +179,44 @@ a { color: inherit; text-decoration: none; }
   .como-link:hover i { transform: translateX(4px); }
 }
 
-/* Estado de animación: main.js agrega .como-anim y luego .como-on al entrar en pantalla.*/
-.como-anim .como-num {
-  background: #fff;
-  color: var(--navy);
+/* Línea de progreso ligada al scroll: animations.js agrega .como-scroll y
+   actualiza --como-p (0 a 1). Cada número hace "pop" cuando la línea lo alcanza.
+   Sin JS o con movimiento reducido queda todo completo. */
+.como-scroll::after {
+  transform: scaleY(var(--como-p, 0));
+  transition: transform .12s linear;
 }
 
-.como-anim::after { transform: scaleY(0); }
+.como-num { isolation: isolate; }
 
-.como-on .como-num {
+.como-num::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
   background: var(--navy);
+  transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.como-scroll .como-num {
+  background: var(--white);
+  color: var(--navy);
+  transition: color .3s ease;
+}
+
+.como-scroll .como-num::before { transform: scale(0); }
+
+.como-scroll .como-step.is-active .como-num {
   color: var(--yellow);
+  animation: como-pop .5s cubic-bezier(.34, 1.56, .64, 1);
 }
 
-.como-on::after {
-  transform: scaleY(1);
-  transition: transform 1.6s cubic-bezier(.4, 0, .2, 1);
-}
+.como-scroll .como-step.is-active .como-num::before { transform: scale(1); }
 
-.como-on .como-step:nth-child(2) .como-num { transition-delay: .5s; }
-.como-on .como-step:nth-child(3) .como-num { transition-delay: 1.1s; }
+@keyframes como-pop {
+  50% { transform: scale(1.22); }
+}
 
 /* La aparición al hacer scroll (data-reveal="como") está en el bloque
    "Hero, Problema, Cómo funciona y Características" al final del archivo */
@@ -206,9 +224,7 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .como-num,
   .como-link,
-  .como-link i,
-  .como-on::after { transition: none !important; }
-  .como-anim::after { transform: none; }
+  .como-link i { transition: none !important; }
   .como-link:hover,
   .como-link:hover i { transform: none; }
 }
@@ -233,8 +249,7 @@ a { color: inherit; text-decoration: none; }
   }
 
   .como-steps::after { transform-origin: left; }
-  .como-anim::after { transform: scaleX(0); }
-  .como-on::after { transform: scaleX(1); }
+  .como-scroll::after { transform: scaleX(var(--como-p, 0)); }
 
   .como-step {
     display: flex;
