@@ -2280,3 +2280,73 @@ html {
   40% { transform: translateY(-3px); }
   70% { transform: translateY(1px); }
 }
+/* === Animaciones finales: microanimaciones de íconos al hover === */
+/* Cada ícono se mueve según lo que significa (Cómo funciona, Características y Segmentos) */
+.como-icon i,
+.caracteristicas-section .card-icon i,
+.seg-icon i { transform-origin: center; }
+
+.fa-triangle-exclamation { transform-origin: 50% 10%; }
+.fa-map-location-dot { transform-origin: 50% 100%; }
+
+@media (hover: hover) {
+  /* Teléfono que vibra */
+  :is(.como-card, .caracteristica-card, .seg-card):hover .fa-phone-volume { animation: ic-ring .6s ease-in-out; }
+  /* Incógnito que se agacha y vuelve a asomarse */
+  :is(.como-card, .caracteristica-card, .seg-card):hover .fa-user-secret { animation: ic-peek .7s ease; }
+  /* Mapa: el pin cae y rebota */
+  :is(.como-card, .caracteristica-card, .seg-card):hover .fa-map-location-dot { animation: ic-drop .6s cubic-bezier(.34, 1.56, .64, 1); }
+  /* Alerta que se balancea como campana */
+  :is(.como-card, .caracteristica-card, .seg-card):hover .fa-triangle-exclamation { animation: ic-swing .8s ease; }
+  /* Personas que se juntan */
+  :is(.como-card, .caracteristica-card, .seg-card):hover :is(.fa-users, .fa-people-group) { animation: ic-gather .6s ease; }
+  /* Tienda y casa que saltan */
+  :is(.como-card, .caracteristica-card, .seg-card):hover :is(.fa-store, .fa-house-chimney-user) { animation: ic-hop .55s ease; }
+  /* Idea que se enciende */
+  :is(.como-card, .caracteristica-card, .seg-card):hover .fa-lightbulb { animation: ic-glow .7s ease; }
+}
+
+@keyframes ic-ring {
+  0%, 100% { transform: rotate(0); }
+  15%, 45%, 75% { transform: rotate(-14deg); }
+  30%, 60%, 90% { transform: rotate(14deg); }
+}
+
+@keyframes ic-peek {
+  0%, 100% { transform: translateY(0); }
+  35% { transform: translateY(4px) scaleY(.9); }
+  70% { transform: translateY(-3px); }
+}
+
+@keyframes ic-drop {
+  0% { transform: translateY(-12px); opacity: 0; }
+  60% { opacity: 1; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes ic-swing {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(16deg); }
+  40% { transform: rotate(-12deg); }
+  60% { transform: rotate(7deg); }
+  80% { transform: rotate(-3deg); }
+}
+
+@keyframes ic-gather {
+  0%, 100% { transform: scaleX(1); }
+  35% { transform: scaleX(1.22); }
+  70% { transform: scaleX(.88); }
+}
+
+@keyframes ic-hop {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-5px) scale(1.04, .96); }
+  70% { transform: translateY(1px) scale(.98, 1.02); }
+}
+
+@keyframes ic-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  20% { opacity: .35; }
+  40% { opacity: 1; transform: scale(1.15); }
+  55% { opacity: .6; }
+}
