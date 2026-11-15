@@ -3,13 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
   <meta name="darkreader-lock">
   <title>Vigía | Reporte anónimo de extorsión</title>
   <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tema: se aplica antes de cargar el CSS para que no haya parpadeo.
+       Usa la elección guardada o, si no hay, la preferencia del sistema. -->
+  <script>
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem('vigia-theme'); } catch (e) {}
+      if (theme !== 'dark' && theme !== 'light') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
@@ -39,6 +51,12 @@
           <li><a class="navbar-link" href="#caracteristicas">Características</a></li>
           <li><a class="navbar-link" href="#segmentos">Para quién es</a></li>
         </ul>
+        <button class="theme-toggle theme-toggle-mobile" type="button" aria-label="Modo oscuro" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">
+            <i class="fa-solid fa-moon theme-moon"></i>
+            <i class="fa-solid fa-sun theme-sun"></i>
+          </span>
+        </button>
         <a class="navbar-cta navbar-cta-mobile" href="#cta">
           <i class="fa-solid fa-download" aria-hidden="true"></i>
           <span>Descargar app</span>
@@ -46,6 +64,13 @@
       </nav>
 
       <div class="navbar-actions">
+        <button class="theme-toggle theme-toggle-desktop" type="button" aria-label="Modo oscuro" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">
+            <i class="fa-solid fa-moon theme-moon"></i>
+            <i class="fa-solid fa-sun theme-sun"></i>
+          </span>
+        </button>
+
         <a class="navbar-cta navbar-cta-desktop" href="#cta">
           <i class="fa-solid fa-download" aria-hidden="true"></i>
           <span>Descargar app</span>
