@@ -2937,3 +2937,6 @@ html.theme-transition *::after {
 /* Desplegable de la lista de espera en modo oscuro: opciones legibles */
 [data-theme="dark"] select { color-scheme: dark; }
 [data-theme="dark"] select option { background-color: #13263f; color: #fafaf5; }
+
+/* Equipo en dos columnas para que no se alinee fila a fila con Secciones */
+.footer-team .footer-list { grid-template-columns: repeat(2, max-content); column-gap: 1.5rem; }
