@@ -1758,8 +1758,8 @@ html {
    Radio, padding, sombra y hover: bloque compartido al final del archivo
    ========================================= */
 .problema-section .card-icon {
-  background-color: var(--navy);
-  color: var(--white);
+  background-color: rgba(22, 53, 94, .07);
+  color: var(--navy);
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -2178,4 +2178,105 @@ html {
   .hero-heat-3,
   .hero-heat-4,
   .hero-heat-6 { display: none; }
+}
+/* === Animaciones finales: Problema === */
+/* Íconos SVG propios: trazo azul marino con detalles amarillos */
+.pi {
+  width: 42px;
+  height: 42px;
+  overflow: visible;
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pi g,
+.pi path,
+.pi rect,
+.pi circle {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.pi-fill { stroke: none; }
+.pi-yellow { fill: var(--yellow); }
+.pi-navy { fill: var(--navy); }
+
+.pi-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.pi-ring {
+  stroke-width: 1.6;
+  stroke-dasharray: 2.5 4;
+  opacity: .45;
+}
+
+/* Al entrar en pantalla: se dibuja el trazo y luego aparecen los rellenos */
+.problema-visible .pi-draw {
+  animation: pi-draw 1.2s cubic-bezier(.65, 0, .35, 1) backwards;
+  animation-delay: calc(var(--problema-delay, 0ms) + 200ms);
+}
+
+.problema-visible .pi-fill,
+.problema-visible .pi-ring {
+  animation: pi-fade .5s ease backwards;
+  animation-delay: calc(var(--problema-delay, 0ms) + 1000ms);
+}
+
+@keyframes pi-draw {
+  from { stroke-dashoffset: 1; }
+}
+
+@keyframes pi-fade {
+  from { opacity: 0; }
+}
+
+/* Hover: cada ícono reacciona según lo que representa */
+.pi-alert { transform-origin: 50% 85%; }
+.pi-lock { transform-origin: 50% 0; }
+
+@media (hover: hover) {
+  .problema-card:hover .pi-alert { animation: pi-shake .55s ease; }
+  .problema-card:hover .pi-alert-mark { animation: pi-blink .55s steps(2, jump-none) 2; }
+  .problema-card:hover .pi-shackle { animation: pi-unlock .8s ease; }
+  .problema-card:hover .pi-lock { animation: pi-wiggle .5s ease .15s; }
+  .problema-card:hover .pi-ring { animation: pi-spin 6s linear infinite; }
+  .problema-card:hover .pi-store { animation: pi-hop .55s ease; }
+}
+
+@keyframes pi-shake {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(-10deg); }
+  40% { transform: rotate(8deg); }
+  60% { transform: rotate(-6deg); }
+  80% { transform: rotate(3deg); }
+}
+
+@keyframes pi-blink {
+  50% { opacity: .15; }
+}
+
+@keyframes pi-unlock {
+  0%, 100% { transform: translateY(0); }
+  35%, 60% { transform: translateY(-3px); }
+}
+
+@keyframes pi-wiggle {
+  0%, 100% { transform: rotate(0); }
+  30% { transform: rotate(-7deg); }
+  70% { transform: rotate(5deg); }
+}
+
+@keyframes pi-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pi-hop {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-3px); }
+  70% { transform: translateY(1px); }
 }
