@@ -70,55 +70,7 @@
 
   var segReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* --- Aparición al hacer scroll (data-reveal="seg|cta|footer") --- */
-  var segRevealEls = document.querySelectorAll('[data-reveal]');
-
-  if (!segReducedMotion.matches && 'IntersectionObserver' in window) {
-    var segRevealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        var prefix = el.getAttribute('data-reveal');
-        segRevealObserver.unobserve(el);
-        el.classList.add(prefix + '-visible');
-
-        // Al terminar la entrada se quitan las clases para no interferir con los hover
-        var onEnd = function (event) {
-          if (event.target !== el || event.propertyName !== 'opacity') return;
-          el.removeEventListener('transitionend', onEnd);
-          el.classList.remove(prefix + '-reveal', prefix + '-visible');
-        };
-        el.addEventListener('transitionend', onEnd);
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-    Array.prototype.forEach.call(segRevealEls, function (el) {
-      el.classList.add(el.getAttribute('data-reveal') + '-reveal');
-      segRevealObserver.observe(el);
-    });
-  }
-
-  /* --- Segmentos: tilt 3D siguiendo el mouse (solo escritorio con mouse) --- */
-  var segTiltQuery = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1024px)');
-  var segMaxTilt = 6; // grados
-
-  Array.prototype.forEach.call(document.querySelectorAll('.seg-card'), function (card) {
-    card.addEventListener('mousemove', function (event) {
-      if (!segTiltQuery.matches || segReducedMotion.matches) return;
-      var rect = card.getBoundingClientRect();
-      var x = (event.clientX - rect.left) / rect.width - 0.5;
-      var y = (event.clientY - rect.top) / rect.height - 0.5;
-      card.classList.add('seg-tilting');
-      card.style.setProperty('--seg-ry', (x * segMaxTilt * 2).toFixed(2) + 'deg');
-      card.style.setProperty('--seg-rx', (-y * segMaxTilt * 2).toFixed(2) + 'deg');
-    });
-
-    card.addEventListener('mouseleave', function () {
-      card.classList.remove('seg-tilting');
-      card.style.removeProperty('--seg-rx');
-      card.style.removeProperty('--seg-ry');
-    });
-  });
+  // Los efectos visuales (aparición, tilt, volver arriba) están en animations.js
 
   /* --- CTA: formulario de lista de espera (no envía datos a ningún servidor) --- */
   var ctaForm = document.getElementById('cta-form');
@@ -237,30 +189,6 @@
   var footerYear = document.getElementById('footer-year');
   if (footerYear) {
     footerYear.textContent = new Date().getFullYear();
-  }
-
-  /* --- Footer: botón volver arriba --- */
-  var footerTop = document.getElementById('footer-top');
-  if (footerTop) {
-    var footerTicking = false;
-
-    var footerUpdateTop = function () {
-      footerTicking = false;
-      footerTop.classList.toggle('footer-top-show', window.pageYOffset > 600);
-    };
-
-    window.addEventListener('scroll', function () {
-      if (!footerTicking) {
-        footerTicking = true;
-        window.requestAnimationFrame(footerUpdateTop);
-      }
-    }, { passive: true });
-
-    footerTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: segReducedMotion.matches ? 'auto' : 'smooth' });
-    });
-
-    footerUpdateTop();
   }
 })();
 /* === Fin Segmentos / CTA / Footer === */

@@ -116,6 +116,14 @@
         <span class="cta-shape cta-shape-1"></span>
         <span class="cta-shape cta-shape-2"></span>
         <span class="cta-shape cta-shape-3"></span>
+        <span class="cta-heat cta-heat-1"></span>
+        <span class="cta-heat cta-heat-2"></span>
+        <span class="cta-heat cta-heat-3"></span>
+        <span class="cta-heat cta-heat-4"></span>
+        <span class="cta-heat cta-heat-5"></span>
+        <span class="cta-heat cta-heat-6"></span>
+        <span class="cta-heat cta-heat-7"></span>
+        <span class="cta-heat cta-heat-8"></span>
       </div>
       <div class="container cta-inner">
         <div class="cta-copy" data-reveal="cta">
@@ -175,7 +183,10 @@
           </button>
 
           <div class="cta-status" role="status" aria-live="polite">
-            <span class="cta-check" aria-hidden="true"><span class="cta-check-short"></span><span class="cta-check-long"></span></span>
+            <svg class="cta-check" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" focusable="false">
+              <circle class="cta-check-circle" cx="20" cy="20" r="20"/>
+              <path class="cta-check-mark" d="M11.5 20.5l6 6 11-12" pathLength="1"/>
+            </svg>
             <p id="cta-status" class="cta-status-text"></p>
           </div>
         </form>
@@ -186,13 +197,17 @@
     <!-- === Footer === -->
     <footer class="footer" role="contentinfo">
       <div class="footer-wave" aria-hidden="true">
-        <svg class="footer-wave-svg" viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
+        <svg class="footer-wave-svg footer-wave-blue" viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
+          <path d="M0 0 H2880 V22 Q 2700 38 2520 22 T 2160 22 T 1800 22 T 1440 22 T 1080 22 T 720 22 T 360 22 T 0 22 Z" fill="currentColor"/>
+        </svg>
+        <svg class="footer-wave-svg footer-wave-yellow" viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
           <path d="M0 20 Q 180 4 360 20 T 720 20 T 1080 20 T 1440 20 T 1800 20 T 2160 20 T 2520 20 T 2880 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
         </svg>
       </div>
       <div class="container footer-inner">
         <div class="footer-brand" data-reveal="footer">
           <a href="#hero" class="footer-logo-link" aria-label="Vigía, volver al inicio">
+            <span class="footer-logo-halo" aria-hidden="true"></span>
             <img src="assets/images/logo-vigia.png" alt="Logo de Vigía" class="footer-logo" width="1607" height="596">
           </a>
           <p class="footer-tagline">Reporte anónimo de extorsión para comerciantes de Lima.</p>
@@ -236,5 +251,6 @@
   </main>
 
   <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/animations.js" defer></script>
 </body>
 </html>
