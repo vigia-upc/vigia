@@ -62,30 +62,40 @@
 
   updateScrollState();
   window.addEventListener('scroll', updateScrollState, { passive: true });
-})();
 
-/* === feature/como-funciona: línea de progreso de los 3 pasos === */
-(function () {
-  'use strict';
+  // Scrollspy: marca el enlace de la sección que ocupa el centro de la pantalla
+  const linksById = new Map();
+  navMenu.querySelectorAll('.navbar-link[href^="#"]').forEach((link) => {
+    linksById.set(link.getAttribute('href').slice(1), link);
+  });
 
-  var steps = document.getElementById('como-steps');
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!steps || reduced || !('IntersectionObserver' in window)) return;
-
-  steps.classList.add('como-anim');
-
-  var stepsObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      stepsObserver.unobserve(entry.target);
-      entry.target.classList.add('como-on');
+  const setActiveLink = (id) => {
+    linksById.forEach((link, linkId) => {
+      const isActive = linkId === id;
+      link.classList.toggle('is-active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
+      }
     });
-  }, { threshold: 0.35 });
+  };
 
-  stepsObserver.observe(steps);
+  const spySections = document.querySelectorAll('main section[id]');
+
+  if (spySections.length && 'IntersectionObserver' in window) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // Las secciones sin enlace (ej. #cta) dejan todos los enlaces sin marcar
+        if (entry.isIntersecting) setActiveLink(entry.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+
+    spySections.forEach((section) => spy.observe(section));
+  }
 })();
-/* === Fin feature/como-funciona === */
+
+/* feature/como-funciona: la línea de progreso ligada al scroll está en animations.js */
 
 
 /* === Segmentos / CTA / Footer === */
