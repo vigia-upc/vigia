@@ -22,6 +22,261 @@ a { color: inherit; text-decoration: none; }
 .container { width: min(1120px, 92%); margin-inline: auto; }
 
 /* Cada integrante agrega aquí los estilos de su sección */
+/* VARIABLES */
+:root {
+  --azul: #16355e;
+  --amarillo: #f2c744;
+  --crema: #fafaf5;
+  --blanco: #ffffff;
+}
+
+/* CONFIGURACION GENERAL */
+.hero {
+  width: 100%;
+  min-height: 570px;
+  background-color: var(--crema);
+  font-family: 'Poppins', sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.hero * {
+  box-sizing: border-box;
+}
+
+/* CONTENEDOR */
+.hero-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 65px 55px;
+
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 45px;
+}
+
+/* CONTENIDO */
+.hero-content {
+  max-width: 600px;
+}
+
+/* LOGO */
+.hero-logo {
+  margin-bottom: 30px;
+}
+
+.hero-logo img {
+  width: 125px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* TITULO */
+.hero-content h1 {
+  color: var(--azul);
+  font-size: clamp(38px, 4.2vw, 54px);
+  font-weight: 800;
+  line-height: 1.18;
+
+  margin-bottom: 35px;
+}
+
+.hero-content h1 span {
+  color: var(--azul);
+}
+
+/* BOTONES */
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  display: inline-block;
+  min-width: 135px;
+  padding: 13px 24px;
+
+  text-align: center;
+  text-decoration: none;
+
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+/* BOTON PRINCIPAL */
+.hero-btn-primary {
+  background-color: var(--azul);
+  color: var(--blanco);
+  border: 2px solid var(--azul);
+  box-shadow: 0 4px 8px rgba(22, 53, 94, 0.18);
+}
+
+.hero-btn-primary:hover {
+  background-color: #244b78;
+  transform: translateY(-3px);
+}
+
+/* BOTON SECUNDARIO */
+.hero-btn-secondary {
+  background-color: var(--amarillo);
+  color: var(--azul);
+  border: 2px solid var(--amarillo);
+}
+
+.hero-btn-secondary:hover {
+  background-color: #e4b82e;
+  transform: translateY(-3px);
+}
+
+/* ELEMENTO VISUAL DEL LOGO */
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-logo-decoration {
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+  background-color: #e8edf4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.hero-logo-decoration::before {
+  content: "";
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  border: 2px solid var(--amarillo);
+  border-radius: 50%;
+}
+
+.hero-logo-decoration img {
+  width: 155px;
+  height: auto;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* ANIMACION */
+.hero-content,
+.hero-visual {
+  animation: heroAppear 0.8s ease forwards;
+}
+
+.hero-visual {
+  animation-delay: 0.15s;
+}
+
+@keyframes heroAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TABLETS */
+@media (max-width: 900px) {
+
+  .hero-container {
+    padding: 55px 35px;
+    gap: 25px;
+  }
+
+  .hero-logo-decoration {
+    width: 240px;
+    height: 240px;
+  }
+
+  .hero-logo-decoration::before {
+    width: 195px;
+    height: 195px;
+  }
+
+  .hero-logo-decoration img {
+    width: 125px;
+  }
+
+  .hero-content h1 {
+    font-size: 40px;
+  }
+}
+
+/* CELULARES */
+@media (max-width: 650px) {
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    padding: 55px 25px;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-content {
+    margin: 0 auto;
+  }
+
+  .hero-logo img {
+    width: 115px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+}
+
+/* CELULARES PEQUEÑOS */
+@media (max-width: 380px) {
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-btn {
+    width: 100%;
+  }
+}
 
 /* feature/navbar: barra de navegación sticky y menú responsive */
 html {
