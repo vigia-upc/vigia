@@ -1834,8 +1834,10 @@ html {
 
 /* Andre */
 .caracteristicas-section {
-    background-color: #fafaf5; 
-    padding: 60px 20px;
+    position: relative;
+    /* Banda con un tinte azul muy suave para separarla de Cómo funciona y Segmentos */
+    background: linear-gradient(rgba(22, 53, 94, .05), rgba(22, 53, 94, .05)), var(--cream);
+    padding: 6rem 20px;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -2453,3 +2455,38 @@ html {
   will-change: transform;
   pointer-events: none;
 }
+/* === Animaciones finales: separadores con onda entre secciones === */
+/* Mismo dibujo que la onda del footer: SVG del doble de ancho que se desplaza en bucle.
+   El color es el de la sección anterior/siguiente para que parezca que se funden. */
+.section-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 28px;
+  overflow: hidden;
+  color: var(--cream);
+  pointer-events: none;
+}
+
+.section-wave-top { top: -1px; }
+
+.section-wave-bottom {
+  bottom: -1px;
+  transform: scaleY(-1);
+}
+
+.section-wave svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+  animation: footer-wave-left 30s linear infinite;
+}
+
+.section-wave-bottom svg { animation-name: footer-wave-right; }
+
+/* Arriba del CTA: color del final del degradado de Segmentos */
+.cta .section-wave { color: rgb(241, 242, 239); }
