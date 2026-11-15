@@ -4,6 +4,7 @@
   --navy-dark: #0f2542;
   --yellow: #f2c744;
   --cream: #fafaf5;
+  --white: #ffffff;
   --text: #1f2937;
   --muted: #5b6678;
 }
@@ -240,19 +241,11 @@ a { color: inherit; text-decoration: none; }
 }
 /* === Fin feature/como-funciona === */
 
-/* VARIABLES */
-:root {
-  --azul: #16355e;
-  --amarillo: #f2c744;
-  --crema: #fafaf5;
-  --blanco: #ffffff;
-}
-
 /* CONFIGURACION GENERAL */
 .hero {
   width: 100%;
   min-height: 570px;
-  background-color: var(--crema);
+  background-color: var(--cream);
   font-family: 'Poppins', sans-serif;
 
   display: flex;
@@ -297,7 +290,7 @@ a { color: inherit; text-decoration: none; }
 
 /* TITULO */
 .hero-content h1 {
-  color: var(--azul);
+  color: var(--navy);
   font-size: clamp(38px, 4.2vw, 54px);
   font-weight: 800;
   line-height: 1.18;
@@ -306,7 +299,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-content h1 span {
-  color: var(--azul);
+  color: var(--navy);
 }
 
 /* BOTONES */
@@ -334,9 +327,9 @@ a { color: inherit; text-decoration: none; }
 
 /* BOTON PRINCIPAL */
 .hero-btn-primary {
-  background-color: var(--azul);
-  color: var(--blanco);
-  border: 2px solid var(--azul);
+  background-color: var(--navy);
+  color: var(--white);
+  border: 2px solid var(--navy);
   box-shadow: 0 4px 8px rgba(22, 53, 94, 0.18);
 }
 
@@ -347,9 +340,9 @@ a { color: inherit; text-decoration: none; }
 
 /* BOTON SECUNDARIO */
 .hero-btn-secondary {
-  background-color: var(--amarillo);
-  color: var(--azul);
-  border: 2px solid var(--amarillo);
+  background-color: var(--yellow);
+  color: var(--navy);
+  border: 2px solid var(--yellow);
 }
 
 .hero-btn-secondary:hover {
@@ -385,7 +378,7 @@ a { color: inherit; text-decoration: none; }
   width: 240px;
   height: 240px;
 
-  border: 2px solid var(--amarillo);
+  border: 2px solid var(--yellow);
   border-radius: 50%;
 }
 
