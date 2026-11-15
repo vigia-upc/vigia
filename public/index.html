@@ -66,6 +66,16 @@
 
     <section class="hero" id="inicio">
 
+      <!-- Fondo: puntos tipo mapa de calor (decorativo) -->
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-heat hero-heat-1"></span>
+        <span class="hero-heat hero-heat-2"></span>
+        <span class="hero-heat hero-heat-3"></span>
+        <span class="hero-heat hero-heat-4"></span>
+        <span class="hero-heat hero-heat-5"></span>
+        <span class="hero-heat hero-heat-6"></span>
+      </div>
+
       <div class="hero-container">
 
         <!-- CONTENIDO PRINCIPAL -->
@@ -112,10 +122,32 @@
 
           <div class="hero-logo-decoration">
 
-            <img
-                    src="assets/images/logo-icono.png"
-                    alt="Icono de Vigía"
-            >
+            <!-- Ondas de radar que salen del anillo amarillo -->
+            <span class="hero-radar" aria-hidden="true"></span>
+            <span class="hero-radar hero-radar-2" aria-hidden="true"></span>
+
+            <!-- Pin de Vigía en SVG: el ojo parpadea y el iris sigue al mouse -->
+            <svg class="hero-pin" viewBox="0 0 120 150" width="150" height="188" role="img" aria-label="Icono de Vigía">
+              <defs>
+                <clipPath id="hero-eye-clip">
+                  <path d="M17 56Q60 14 103 56Q60 98 17 56Z"/>
+                </clipPath>
+              </defs>
+              <path class="hp-navy" d="M60 4C31.3 4 8 27.3 8 56c0 37 52 90 52 90s52-53 52-90C112 27.3 88.7 4 60 4Z"/>
+              <circle class="hp-cream" cx="60" cy="56" r="39"/>
+              <g class="hero-eye">
+                <path class="hp-navy" d="M17 56Q60 14 103 56Q60 98 17 56Z"/>
+                <path class="hp-cream" d="M29 56Q60 27 91 56Q60 85 29 56Z"/>
+                <g clip-path="url(#hero-eye-clip)">
+                  <g class="hero-iris">
+                    <circle class="hp-navy" cx="60" cy="56" r="18"/>
+                    <circle class="hp-cream" cx="60" cy="56" r="14"/>
+                    <circle class="hp-yellow" cx="60" cy="56" r="10.5"/>
+                    <circle class="hp-cream" cx="64.5" cy="51.5" r="3"/>
+                  </g>
+                </g>
+              </g>
+            </svg>
 
           </div>
 

@@ -67,6 +67,41 @@
     });
   });
 
+  /* --- Hero: el iris del pin sigue suavemente al mouse (solo escritorio) --- */
+  var iris = document.querySelector('.hero-iris');
+  var pin = document.querySelector('.hero-pin');
+  var irisQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  if (iris && pin) {
+    var irisX = 0, irisY = 0, irisTX = 0, irisTY = 0, irisFrame = 0;
+    var maxX = 5, maxY = 2.5; // desplazamiento máximo en unidades del viewBox
+
+    var stepIris = function () {
+      irisX += (irisTX - irisX) * 0.12;
+      irisY += (irisTY - irisY) * 0.12;
+      iris.style.transform = 'translate(' + irisX.toFixed(2) + 'px,' + irisY.toFixed(2) + 'px)';
+      if (Math.abs(irisTX - irisX) > 0.02 || Math.abs(irisTY - irisY) > 0.02) {
+        irisFrame = window.requestAnimationFrame(stepIris);
+      } else {
+        irisFrame = 0;
+      }
+    };
+
+    window.addEventListener('mousemove', function (event) {
+      if (!irisQuery.matches || reducedMotion.matches) return;
+      var rect = pin.getBoundingClientRect();
+      if (!rect.width || rect.bottom < 0 || rect.top > window.innerHeight) return;
+      // Centro del ojo: (60, 56) dentro del viewBox de 120 x 150
+      var dx = event.clientX - (rect.left + rect.width * 0.5);
+      var dy = event.clientY - (rect.top + rect.height * 56 / 150);
+      var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      var reach = Math.min(1, dist / 320);
+      irisTX = (dx / dist) * maxX * reach;
+      irisTY = (dy / dist) * maxY * reach;
+      if (!irisFrame) irisFrame = window.requestAnimationFrame(stepIris);
+    }, { passive: true });
+  }
+
   /* --- Footer: botón volver arriba con scroll suave --- */
   var topBtn = document.getElementById('footer-top');
   if (topBtn) {
