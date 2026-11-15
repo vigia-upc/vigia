@@ -1272,3 +1272,28 @@ html {
   .footer-logo-halo { display: none; }
 }
 /* === Fin Segmentos, CTA y Footer === */
+
+/*=== Feature / problema ===*/
+/* =========================================
+   SECCIÓN: PROBLEMA (Base)
+   ========================================= */
+.problema-section {
+  padding: 6rem 0;
+}
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: 0 4px 15px rgba(22, 53, 94, 0.08);
+  text-align: center;
+}
