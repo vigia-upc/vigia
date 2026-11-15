@@ -2365,3 +2365,36 @@ html {
   40% { opacity: 1; transform: scale(1.15); }
   55% { opacity: .6; }
 }
+/* === Animaciones finales: detalles === */
+/* Punto "en vivo" en las etiquetas: la vigilancia está activa */
+.live-dot {
+  position: relative;
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  margin-right: .45rem;
+  border-radius: 50%;
+  background: var(--navy);
+  vertical-align: .05em;
+}
+
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--navy);
+  animation: live-ping 2s ease-out infinite;
+}
+
+@keyframes live-ping {
+  from { transform: scale(1); opacity: .5; }
+  to   { transform: scale(2.6); opacity: 0; }
+}
+
+/* Contador "30": cifras de ancho fijo para que el texto no salte */
+.count-up {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--navy);
+}

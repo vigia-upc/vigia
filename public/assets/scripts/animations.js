@@ -91,6 +91,39 @@
 
   requestScrollTasks();
 
+  /* --- Contadores: el número sube de 0 a su valor al entrar en pantalla --- */
+  var counters = document.querySelectorAll('.count-up[data-count]');
+
+  if (counters.length && !reducedMotion.matches && 'IntersectionObserver' in window) {
+    var runCounter = function (el) {
+      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      var duration = 900;
+      var startTime = 0;
+      var tick = function (now) {
+        if (!startTime) startTime = now;
+        var t = Math.min(1, (now - startTime) / duration);
+        var eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = String(Math.round(target * eased));
+        if (t < 1) window.requestAnimationFrame(tick);
+      };
+      window.requestAnimationFrame(tick);
+    };
+
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        counterObserver.unobserve(entry.target);
+        // Pequeña espera para que coincida con la entrada del texto
+        window.setTimeout(function () { runCounter(entry.target); }, 250);
+      });
+    }, { threshold: 1 });
+
+    Array.prototype.forEach.call(counters, function (el) {
+      el.textContent = '0';
+      counterObserver.observe(el);
+    });
+  }
+
   /* --- Segmentos: tilt 3D sutil con el mouse (solo dispositivos con mouse) --- */
   var tiltQuery = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 768px)');
   var maxTilt = 6; // grados
