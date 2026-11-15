@@ -2938,5 +2938,7 @@ html.theme-transition *::after {
 [data-theme="dark"] select { color-scheme: dark; }
 [data-theme="dark"] select option { background-color: #13263f; color: #fafaf5; }
 
-/* Equipo en dos columnas para que no se alinee fila a fila con Secciones */
-.footer-team .footer-list { grid-template-columns: repeat(2, max-content); column-gap: 1.5rem; }
+/* Equipo como "Hecho por" bajo el eslogan, separado de Secciones */
+.footer-credits { margin-top: 1.25rem; max-width: 340px; font-size: .88rem; line-height: 1.6; color: var(--footer-muted); }
+.footer-credits-label { color: var(--footer-yellow); font-weight: 600; }
+@media (min-width: 1024px) { .footer-inner { grid-template-columns: 2fr 1fr; } }
