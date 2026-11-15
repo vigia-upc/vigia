@@ -14,19 +14,414 @@
 <body>
 
   <!-- feature/navbar: aquí va el navbar -->
+  <header class="navbar" id="inicio">
+    <div class="container navbar-inner">
+      <a class="navbar-brand" href="#inicio" aria-label="Vigía - Ir al inicio">
+        <img
+          class="navbar-logo"
+          src="assets/images/logo-vigia.png"
+          alt="Vigía"
+          width="108"
+          height="40"
+        >
+      </a>
+
+      <nav class="navbar-nav" id="navbar-menu" aria-label="Navegación principal">
+        <ul class="navbar-links">
+          <li><a class="navbar-link" href="#hero">Inicio</a></li>
+          <li><a class="navbar-link" href="#problema">Problema</a></li>
+          <li><a class="navbar-link" href="#como-funciona">Cómo funciona</a></li>
+          <li><a class="navbar-link" href="#caracteristicas">Características</a></li>
+          <li><a class="navbar-link" href="#segmentos">Para quién es</a></li>
+        </ul>
+        <a class="navbar-cta navbar-cta-mobile" href="#descargar">
+          <i class="fa-solid fa-download" aria-hidden="true"></i>
+          <span>Descargar app</span>
+        </a>
+      </nav>
+
+      <div class="navbar-actions">
+        <a class="navbar-cta navbar-cta-desktop" href="#descargar">
+          <i class="fa-solid fa-download" aria-hidden="true"></i>
+          <span>Descargar app</span>
+        </a>
+
+        <button
+          class="navbar-toggle"
+          type="button"
+          aria-label="Abrir menú de navegación"
+          aria-expanded="false"
+          aria-controls="navbar-menu"
+        >
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
 
   <main>
     <!-- feature/hero: aquí va el hero -->
 
-    <!-- feature/problema: aquí va la sección Problema -->
+    <section class="hero" id="inicio">
 
+      <div class="hero-container">
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="hero-content">
+
+          <!-- LOGO PRINCIPAL -->
+          <div class="hero-logo">
+            <img
+                    src="/assets/images/logo-vigia.png"
+                    alt="Logo Vigía"
+            >
+          </div>
+
+          <!-- TITULO -->
+          <h1>
+            Reporta una amenaza
+            de extorsión sin
+            <span>exponerte.</span>
+          </h1>
+
+          <!-- BOTONES -->
+          <div class="hero-buttons">
+
+            <a
+                    href="#"
+                    class="hero-btn hero-btn-primary"
+                    data-store="google"
+            >
+              Google Play
+            </a>
+
+            <a
+                    href="#"
+                    class="hero-btn hero-btn-secondary"
+                    data-store="apple"
+            >
+              App Store
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- LOGO ICONO COMO ELEMENTO VISUAL -->
+        <div class="hero-visual">
+
+          <div class="hero-logo-decoration">
+
+            <img
+                    src="/assets/images/logo-icono.png"
+                    alt="Icono de Vigía"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- feature/problema: aquí va la sección Problema -->
+    <!-- =========================================
+     SECCIÓN: EL PROBLEMA (feature/problema)
+     ========================================= -->
+    <section id="problema" class="problema-section">
+      <div class="container">
+        <h2 class="section-title">El Problema de la Extorsión</h2>
+        <div class="cards-grid">
+          <div class="card problema-card">
+            <div class="card-icon">⚠️</div>
+            <h3>Inseguridad Constante</h3>
+            <p>Los comerciantes enfrentan amenazas diarias que ponen en riesgo su patrimonio y tranquilidad.</p>
+          </div>
+          <div class="card problema-card">
+            <div class="card-icon">🤫</div>
+            <h3>Miedo a Denunciar</h3>
+            <p>La falta de canales anónimos y seguros hace que muchas víctimas guarden silencio por temor.</p>
+          </div>
+          <div class="card problema-card">
+            <div class="card-icon">🏢</div>
+            <h3>Falta de Apoyo</h3>
+            <p>Los negocios se sienten aislados ante la delincuencia, sin una red comunitaria que los respalde.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- feature/como-funciona: aquí va la sección Cómo funciona -->
+        <section id="como-funciona" class="como" aria-labelledby="como-title">
+      <div class="container">
+        <header class="section-header" data-reveal="como">
+          <p class="section-eyebrow">Cómo funciona</p>
+          <h2 id="como-title" class="section-title">De la amenaza al reporte, en tres pasos</h2>
+          <p class="section-subtitle">Todo el proceso toma menos de 30 segundos y no pide ningún dato personal.</p>
+        </header>
+
+        <ol class="como-steps" id="como-steps">
+          <li class="como-step">
+            <span class="como-num" aria-hidden="true">1</span>
+            <div class="como-card" data-reveal="como">
+              <span class="como-icon" aria-hidden="true"><i class="fa-solid fa-phone-volume"></i></span>
+              <h3 class="como-step-title">Recibes una amenaza</h3>
+              <p class="como-step-text">Una llamada, nota o visita exigiendo cupo. Abres Vigía desde el celular.</p>
+            </div>
+          </li>
+          <li class="como-step">
+            <span class="como-num" aria-hidden="true">2</span>
+            <div class="como-card" data-reveal="como">
+              <span class="como-icon" aria-hidden="true"><i class="fa-solid fa-user-secret"></i></span>
+              <h3 class="como-step-title">Repórtalo sin exponerte</h3>
+              <p class="como-step-text">Eliges qué pasó y tu distrito. Nada de nombres, fotos ni datos de contacto.</p>
+            </div>
+          </li>
+          <li class="como-step">
+            <span class="como-num" aria-hidden="true">3</span>
+            <div class="como-card" data-reveal="como">
+              <span class="como-icon" aria-hidden="true"><i class="fa-solid fa-map-location-dot"></i></span>
+              <h3 class="como-step-title">Se suma al mapa de tu zona</h3>
+              <p class="como-step-text">Tu reporte se agrega a los patrones del distrito y ayuda a alertar a otros negocios.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="como-more" data-reveal="como">
+          <a class="como-link" href="#cta">Quiero usar Vigía <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </p>
+      </div>
+    </section>
+
 
     <!-- feature/caracteristicas: aquí va la sección Características -->
+<section id="caracteristicas" class="caracteristicas-section">
+        <div class="container">
+            <h2 class="section-title">Características Principales</h2>
+            <p class="section-subtitle">Conoce las herramientas diseñadas para proteger tu negocio</p>
+            
+            <div class="caracteristicas-grid">
+                <!-- Tarjeta 1 -->
+                <div class="caracteristica-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-user-secret"></i>
+                    </div>
+                    <h3>Reporte Anónimo</h3>
+                    <p>Informa sobre amenazas de extorsión en menos de 30 segundos sin revelar tu identidad ni datos personales.</p>
+                </div>
 
+                <!-- Tarjeta 2 -->
+                <div class="caracteristica-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3>Mapa de Calor</h3>
+                    <p>Visualiza por zonas los incidentes recientes en Lima para identificar puntos críticos de riesgo.</p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="caracteristica-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <h3>Alertas Tempranas</h3>
+                    <p>Recibe notificaciones inmediatas si tu negocio se encuentra cerca de una zona con reportes activos.</p>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="caracteristica-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3>Comunidad Unida</h3>
+                    <p>Conéctate de manera segura con asociaciones de comerciantes y bodegueros para actuar en conjunto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- feature/segmentos-footer: aquí va Segmentos, CTA y footer -->
+
+    <!-- === Segmentos === -->
+    <section id="segmentos" class="seg" aria-labelledby="seg-title">
+      <div class="container">
+        <header class="seg-header" data-reveal="seg">
+          <p class="seg-eyebrow">¿Para quién es Vigía?</p>
+          <h2 id="seg-title" class="seg-title">Una herramienta para todo el barrio</h2>
+          <p class="seg-lead">Cada persona aporta y recibe algo distinto. Juntos convertimos el miedo en información.</p>
+        </header>
+
+        <ul class="seg-grid">
+          <li class="seg-card" data-reveal="seg">
+            <span class="seg-shine" aria-hidden="true"></span>
+            <span class="seg-icon" aria-hidden="true"><i class="fa-solid fa-store"></i></span>
+            <h3 class="seg-card-title">Comerciantes y bodegueros</h3>
+            <p class="seg-card-text">Reportan una extorsión en menos de 30 segundos, sin dar nombre, DNI ni teléfono.</p>
+          </li>
+          <li class="seg-card" data-reveal="seg">
+            <span class="seg-shine" aria-hidden="true"></span>
+            <span class="seg-icon" aria-hidden="true"><i class="fa-solid fa-people-group"></i></span>
+            <h3 class="seg-card-title">Dirigentes de asociaciones y gremios</h3>
+            <p class="seg-card-text">Acceden a un dashboard con datos por zona para gestionar su seguridad y sustentar denuncias.</p>
+          </li>
+          <li class="seg-card" data-reveal="seg">
+            <span class="seg-shine" aria-hidden="true"></span>
+            <span class="seg-icon" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></span>
+            <h3 class="seg-card-title">Nuevos emprendedores</h3>
+            <p class="seg-card-text">Conocen el nivel de riesgo de la zona antes de invertir y abrir su negocio.</p>
+          </li>
+          <li class="seg-card" data-reveal="seg">
+            <span class="seg-shine" aria-hidden="true"></span>
+            <span class="seg-icon" aria-hidden="true"><i class="fa-solid fa-house-chimney-user"></i></span>
+            <h3 class="seg-card-title">Vecinos</h3>
+            <p class="seg-card-text">Reciben alertas y forman parte de una comunidad para cuidarse entre todos.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- === Fin Segmentos === -->
+
+    <!-- === CTA === -->
+    <section id="cta" class="cta" aria-labelledby="cta-title">
+      <div class="cta-bg" aria-hidden="true">
+        <span class="cta-glow"></span>
+        <span class="cta-shape cta-shape-1"></span>
+        <span class="cta-shape cta-shape-2"></span>
+        <span class="cta-shape cta-shape-3"></span>
+        <span class="cta-heat cta-heat-1"></span>
+        <span class="cta-heat cta-heat-2"></span>
+        <span class="cta-heat cta-heat-3"></span>
+        <span class="cta-heat cta-heat-4"></span>
+        <span class="cta-heat cta-heat-5"></span>
+        <span class="cta-heat cta-heat-6"></span>
+        <span class="cta-heat cta-heat-7"></span>
+        <span class="cta-heat cta-heat-8"></span>
+      </div>
+      <div class="container cta-inner">
+        <div class="cta-copy" data-reveal="cta">
+          <h2 id="cta-title" class="cta-title">Rompe el silencio sin exponerte</h2>
+          <p class="cta-text">Sé de los primeros en usar Vigía en tu distrito. Te avisaremos cuando la app esté disponible.</p>
+          <ul class="cta-points">
+            <li><i class="fa-solid fa-user-secret" aria-hidden="true"></i> No pedimos tu nombre real</li>
+            <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Tu correo solo se usa para avisarte del lanzamiento</li>
+            <li><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> Gratis para comerciantes y vecinos</li>
+          </ul>
+        </div>
+
+        <form id="cta-form" class="cta-form" data-reveal="cta" novalidate aria-labelledby="cta-form-title">
+          <h3 id="cta-form-title" class="cta-form-title">Únete a la lista de espera</h3>
+
+          <div class="cta-field">
+            <label for="cta-alias" class="cta-label">Nombre o alias <span class="cta-optional">(opcional)</span></label>
+            <div class="cta-control">
+              <input type="text" id="cta-alias" name="alias" class="cta-input" autocomplete="nickname" maxlength="40" placeholder="Ej. Bodega Doña Rosa">
+            </div>
+          </div>
+
+          <div class="cta-field">
+            <label for="cta-email" class="cta-label">Correo electrónico</label>
+            <div class="cta-control">
+              <input type="email" id="cta-email" name="email" class="cta-input" autocomplete="email" required aria-describedby="cta-email-error" placeholder="tucorreo@ejemplo.com">
+            </div>
+            <p id="cta-email-error" class="cta-error" aria-live="polite"></p>
+          </div>
+
+          <div class="cta-field">
+            <label for="cta-tipo" class="cta-label">Tipo de usuario</label>
+            <div class="cta-control">
+              <select id="cta-tipo" name="tipo" class="cta-input" required aria-describedby="cta-tipo-error">
+                <option value="">Selecciona una opción</option>
+                <option value="comerciante">Comerciante o bodeguero</option>
+                <option value="dirigente">Dirigente de asociación o gremio</option>
+                <option value="emprendedor">Nuevo emprendedor</option>
+                <option value="vecino">Vecino</option>
+              </select>
+            </div>
+            <p id="cta-tipo-error" class="cta-error" aria-live="polite"></p>
+          </div>
+
+          <div class="cta-field">
+            <label for="cta-distrito" class="cta-label">Distrito</label>
+            <div class="cta-control">
+              <input type="text" id="cta-distrito" name="distrito" class="cta-input" required aria-describedby="cta-distrito-error" maxlength="60" placeholder="Ej. San Juan de Lurigancho">
+            </div>
+            <p id="cta-distrito-error" class="cta-error" aria-live="polite"></p>
+          </div>
+
+          <button type="submit" class="cta-btn">
+            <span class="cta-btn-label">Quiero unirme</span>
+            <i class="fa-solid fa-paper-plane cta-btn-icon" aria-hidden="true"></i>
+            <i class="fa-solid fa-circle-notch cta-btn-spinner" aria-hidden="true"></i>
+          </button>
+
+          <div class="cta-status" role="status" aria-live="polite">
+            <svg class="cta-check" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" focusable="false">
+              <circle class="cta-check-circle" cx="20" cy="20" r="20"/>
+              <path class="cta-check-mark" d="M11.5 20.5l6 6 11-12" pathLength="1"/>
+            </svg>
+            <p id="cta-status" class="cta-status-text"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- === Fin CTA === -->
+
+    <!-- === Footer === -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-wave" aria-hidden="true">
+        <svg class="footer-wave-svg footer-wave-blue" viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
+          <path d="M0 0 H2880 V22 Q 2700 38 2520 22 T 2160 22 T 1800 22 T 1440 22 T 1080 22 T 720 22 T 360 22 T 0 22 Z" fill="currentColor"/>
+        </svg>
+        <svg class="footer-wave-svg footer-wave-yellow" viewBox="0 0 2880 40" preserveAspectRatio="none" focusable="false">
+          <path d="M0 20 Q 180 4 360 20 T 720 20 T 1080 20 T 1440 20 T 1800 20 T 2160 20 T 2520 20 T 2880 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </div>
+      <div class="container footer-inner">
+        <div class="footer-brand" data-reveal="footer">
+          <a href="#hero" class="footer-logo-link" aria-label="Vigía, volver al inicio">
+            <span class="footer-logo-halo" aria-hidden="true"></span>
+            <img src="assets/images/logo-vigia.png" alt="Logo de Vigía" class="footer-logo" width="1607" height="596">
+          </a>
+          <p class="footer-tagline">Reporte anónimo de extorsión para comerciantes de Lima.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Secciones del sitio" data-reveal="footer">
+          <h2 class="footer-heading">Secciones</h2>
+          <ul class="footer-list">
+            <li><a href="#hero" class="footer-link">Inicio</a></li>
+            <li><a href="#problema" class="footer-link">Problema</a></li>
+            <li><a href="#como-funciona" class="footer-link">Cómo funciona</a></li>
+            <li><a href="#caracteristicas" class="footer-link">Características</a></li>
+            <li><a href="#segmentos" class="footer-link">Segmentos</a></li>
+            <li><a href="#cta" class="footer-link">Lista de espera</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-team" data-reveal="footer">
+          <h2 class="footer-heading">Equipo</h2>
+          <ul class="footer-list">
+            <li>Diego Avalos</li>
+            <li>Miguel Jara</li>
+            <li>Aaron</li>
+            <li>Jose</li>
+            <li>Marlon</li>
+            <li>André</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>Proyecto académico UPC, curso 1ASI0385</p>
+        <p>&copy; <span id="footer-year">2026</span> Vigía</p>
+      </div>
+
+      <button type="button" id="footer-top" class="footer-top" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+      </button>
+    </footer>
+    <!-- === Fin Footer === -->
   </main>
 
   <script src="assets/scripts/main.js"></script>
+  <script src="assets/scripts/animations.js" defer></script>
 </body>
 </html>
