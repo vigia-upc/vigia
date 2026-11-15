@@ -492,7 +492,7 @@ a { color: inherit; text-decoration: none; }
     grid-template-columns: 1fr;
     padding: 28px 25px 90px;
     text-align: center;
-    gap: 18px;
+    gap: 30px;
   }
 
   .hero-content {
