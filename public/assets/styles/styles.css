@@ -844,8 +844,7 @@ html {
   padding: 4rem 0;
   background:
     radial-gradient(circle at 15% 0%, rgba(242, 199, 68, .12), transparent 45%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg-fade) 100%),
-    var(--bg);
+    var(--bg-alt);
   scroll-margin-top: 4rem;
 }
 
@@ -1844,7 +1843,11 @@ html {
    ========================================= */
 .problema-section {
   padding: 6rem 0;
+  background: var(--bg-alt);
 }
+
+/* Sobre fondo blanco, las tarjetas van en crema (como en Segmentos) */
+.problema-section .card { background: var(--surface-soft); }
 
 .problema-section .section-title {
   margin-bottom: 2.5rem;
@@ -2547,7 +2550,8 @@ html {
 .section-wave-bottom svg { animation-name: footer-wave-right; }
 
 /* Arriba del CTA: color del final del degradado de Segmentos */
-.cta .section-wave { color: rgb(241, 242, 239); }
+.cta .section-wave,
+.caracteristicas-section .section-wave-bottom { color: var(--bg-alt); }
 /* === Tema oscuro === */
 :root { color-scheme: light; }
 
@@ -2841,3 +2845,91 @@ html.theme-transition *::after {
 @media (prefers-reduced-motion: reduce) {
   .hero-highlight::before { display: none; }
 }
+/* === Divisores entre secciones === */
+/* Fondos alternados: Hero crema, Problema blanco, Cómo funciona crema,
+   Características con tinte azul, Segmentos blanco y CTA azul marino.
+   En el borde entre secciones: línea amarilla que se dibuja desde el centro
+   y un pin de Vigía que aparece con pop y emite un pulso de radar (una sola vez). */
+.divider {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: 34px;
+  margin: -17px 0;
+  pointer-events: none;
+}
+
+.divider-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(560px, 72%);
+  height: 2px;
+  margin: -1px 0 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(242, 199, 68, 0), var(--yellow) 30%, var(--yellow) 70%, rgba(242, 199, 68, 0));
+  transform: translateX(-50%);
+}
+
+.divider-pin {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 4px 12px rgba(var(--shadow-rgb), .14);
+}
+
+.divider-pin svg { display: block; }
+
+/* Pulso de radar */
+.divider-pin::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--yellow);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+/* Estado inicial (solo con JS y sin movimiento reducido: animations.js agrega .divider-reveal) */
+.js .divider-reveal:not(.divider-visible) .divider-line { transform: translateX(-50%) scaleX(0); }
+.js .divider-reveal:not(.divider-visible) .divider-pin { transform: scale(0); }
+
+.divider-visible .divider-line {
+  animation: divider-draw .9s cubic-bezier(.65, 0, .35, 1) backwards;
+  animation-delay: var(--divider-delay, 0ms);
+}
+
+.divider-visible .divider-pin {
+  animation: divider-pop .5s cubic-bezier(.34, 1.56, .64, 1) backwards;
+  animation-delay: calc(var(--divider-delay, 0ms) + 350ms);
+}
+
+.divider-visible .divider-pin::after {
+  animation: divider-pulse 1.4s ease-out 2;
+  animation-delay: calc(var(--divider-delay, 0ms) + 800ms);
+}
+
+@keyframes divider-draw {
+  from { transform: translateX(-50%) scaleX(0); }
+}
+
+@keyframes divider-pop {
+  from { transform: scale(0); }
+}
+
+@keyframes divider-pulse {
+  from { transform: scale(1); opacity: .7; }
+  to   { transform: scale(2.4); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .divider *,
+  .divider *::after { animation: none !important; }
+}
+/* === Fin divisores === */
