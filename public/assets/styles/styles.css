@@ -2287,7 +2287,7 @@ html {
 }
 
 .hero-heat-1 { top: 14%; left: 6%;  --hero-heat-delay: 0s; }
-.hero-heat-2 { top: 82%; left: 12%; --hero-heat-delay: -.8s; }
+.hero-heat-2 { top: 90%; left: 4%; --hero-heat-delay: -.8s; }
 .hero-heat-3 { top: 10%; left: 52%; --hero-heat-delay: -1.6s; }
 .hero-heat-4 { top: 88%; left: 58%; --hero-heat-delay: -2.4s; }
 .hero-heat-5 { top: 20%; left: 92%; --hero-heat-delay: -.4s; }
@@ -2525,7 +2525,7 @@ html {
   right: 0;
   height: 28px;
   overflow: hidden;
-  color: var(--cream);
+  color: var(--bg);
   pointer-events: none;
 }
 
