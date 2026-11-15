@@ -499,15 +499,44 @@ html {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(250, 250, 245, 0.96);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(22, 53, 94, 0.1);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.35s ease;
+}
+
+/* Fondo y sombra en capas propias: al hacer scroll solo se anima su opacidad */
+.navbar::before,
+.navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.navbar::before {
+  top: 0;
+  bottom: 0;
+  background: rgba(250, 250, 245, 0.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.navbar::after {
+  top: 100%;
+  height: 18px;
+  background: linear-gradient(rgba(22, 53, 94, 0.1), rgba(22, 53, 94, 0));
 }
 
 .navbar.is-scrolled {
-  border-bottom-color: rgba(22, 53, 94, 0.16);
-  box-shadow: 0 4px 16px rgba(22, 53, 94, 0.08);
+  border-bottom-color: rgba(22, 53, 94, 0.12);
+}
+
+.navbar.is-scrolled::before,
+.navbar.is-scrolled::after {
+  opacity: 1;
 }
 
 .navbar-inner {
@@ -565,8 +594,13 @@ html {
   border-radius: 2px;
   background: var(--yellow);
   transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.2s ease;
+  /* Al salir del hover se recoge hacia la derecha; al entrar crece desde la izquierda */
+  transform-origin: right center;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.navbar-link:hover::after {
+  transform-origin: left center;
 }
 
 .navbar-link:hover,
@@ -687,6 +721,11 @@ html {
     padding-left: 12px;
   }
 
+  /* En el menú móvil la sección activa se marca con una barra amarilla a la izquierda */
+  .navbar-link.is-active {
+    box-shadow: inset 3px 0 0 var(--yellow);
+  }
+
   .navbar-toggle {
     display: inline-flex;
   }
@@ -724,6 +763,8 @@ html {
   }
 
   .navbar,
+  .navbar::before,
+  .navbar::after,
   .navbar-link,
   .navbar-link::after,
   .navbar-cta,

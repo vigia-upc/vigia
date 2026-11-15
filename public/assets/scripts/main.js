@@ -62,6 +62,37 @@
 
   updateScrollState();
   window.addEventListener('scroll', updateScrollState, { passive: true });
+
+  // Scrollspy: marca el enlace de la sección que ocupa el centro de la pantalla
+  const linksById = new Map();
+  navMenu.querySelectorAll('.navbar-link[href^="#"]').forEach((link) => {
+    linksById.set(link.getAttribute('href').slice(1), link);
+  });
+
+  const setActiveLink = (id) => {
+    linksById.forEach((link, linkId) => {
+      const isActive = linkId === id;
+      link.classList.toggle('is-active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  };
+
+  const spySections = document.querySelectorAll('main section[id]');
+
+  if (spySections.length && 'IntersectionObserver' in window) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // Las secciones sin enlace (ej. #cta) dejan todos los enlaces sin marcar
+        if (entry.isIntersecting) setActiveLink(entry.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+
+    spySections.forEach((section) => spy.observe(section));
+  }
 })();
 
 /* feature/como-funciona: la línea de progreso ligada al scroll está en animations.js */
