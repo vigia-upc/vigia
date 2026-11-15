@@ -1809,9 +1809,9 @@ html {
   transform: translateY(-8px);
 }
 
-.card-icon {
-  background-color: #16355e;
-  color: #ffffff;
+.problema-section .card-icon {
+  background-color: var(--navy);
+  color: var(--white);
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -1873,10 +1873,17 @@ html {
     box-shadow: 0 8px 25px rgba(22, 53, 94, 0.15);
 }
 
-.card-icon {
-    font-size: 2.5rem;
-    color: #16355e; 
-    margin-bottom: 20px;
+.caracteristicas-section .card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: var(--navy);
+    color: var(--yellow);
+    font-size: 1.9rem;
 }
 
 .caracteristica-card h3 {
