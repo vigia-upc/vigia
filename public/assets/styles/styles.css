@@ -4,6 +4,7 @@
   --navy-dark: #0f2542;
   --yellow: #f2c744;
   --cream: #fafaf5;
+  --white: #ffffff;
   --text: #1f2937;
   --muted: #5b6678;
 }
@@ -30,6 +31,43 @@ a { color: inherit; text-decoration: none; }
   background: var(--cream);
   scroll-margin-top: 4rem;
 }
+
+/* Encabezado: mismo estilo que el de Segmentos (.seg-header) */
+.como .section-header {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.como .section-eyebrow {
+  display: inline-block;
+  margin-bottom: .5rem;
+  padding: .25rem .75rem;
+  border-radius: 999px;
+  background: rgba(242, 199, 68, .25);
+  color: var(--navy);
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.como .section-title {
+  color: var(--navy);
+  font-size: 1.75rem;
+  line-height: 1.25;
+  margin-bottom: .75rem;
+}
+
+.como .section-title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: .75rem auto 0;
+  border-radius: 2px;
+  background: var(--yellow);
+}
+
+.como .section-subtitle { color: rgba(22, 53, 94, .78); }
 
 .como-steps {
   position: relative;
@@ -82,21 +120,8 @@ a { color: inherit; text-decoration: none; }
   transition: background .4s ease, color .4s ease;
 }
 
-.como-card {
-  padding: 1.5rem;
-  border: 1px solid rgba(22, 53, 94, .1);
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 4px 14px rgba(22, 53, 94, .06);
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-
-@media (hover: hover) {
-  .como-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 36px rgba(22, 53, 94, .14);
-  }
-}
+/* Radio, padding, sombra y hover: bloque compartido al final del archivo */
+.como-card { background: var(--white); }
 
 .como-icon {
   display: grid;
@@ -175,34 +200,22 @@ a { color: inherit; text-decoration: none; }
 .como-on .como-step:nth-child(2) .como-num { transition-delay: .5s; }
 .como-on .como-step:nth-child(3) .como-num { transition-delay: 1.1s; }
 
-/* Aparición al hacer scroll (la clase la agrega main.js) */
-.como-reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
-}
-
-.como-reveal.como-visible { opacity: 1; transform: none; }
-
-.como-step:nth-child(2) .como-card.como-reveal { transition-delay: .12s; }
-.como-step:nth-child(3) .como-card.como-reveal { transition-delay: .24s; }
+/* La aparición al hacer scroll (data-reveal="como") está en el bloque
+   "Hero, Problema, Cómo funciona y Características" al final del archivo */
 
 @media (prefers-reduced-motion: reduce) {
   .como-num,
-  .como-card,
   .como-link,
   .como-link i,
-  .como-on::after,
-  .como-reveal { transition: none !important; }
+  .como-on::after { transition: none !important; }
   .como-anim::after { transform: none; }
-  .como-card:hover,
   .como-link:hover,
   .como-link:hover i { transform: none; }
-  .como-reveal { opacity: 1; transform: none; }
 }
 
 @media (min-width: 768px) {
   .como { padding: 5rem 0; }
+  .como .section-title { font-size: 2.1rem; }
 
   .como-steps {
     grid-template-columns: repeat(3, 1fr);
@@ -238,21 +251,17 @@ a { color: inherit; text-decoration: none; }
 
   .como-icon { margin-inline: auto; }
 }
-/* === Fin feature/como-funciona === */
 
-/* VARIABLES */
-:root {
-  --azul: #16355e;
-  --amarillo: #f2c744;
-  --crema: #fafaf5;
-  --blanco: #ffffff;
+@media (min-width: 1024px) {
+  .como .section-title { font-size: 2.4rem; }
 }
+/* === Fin feature/como-funciona === */
 
 /* CONFIGURACION GENERAL */
 .hero {
   width: 100%;
   min-height: 570px;
-  background-color: var(--crema);
+  background-color: var(--cream);
   font-family: 'Poppins', sans-serif;
 
   display: flex;
@@ -297,7 +306,7 @@ a { color: inherit; text-decoration: none; }
 
 /* TITULO */
 .hero-content h1 {
-  color: var(--azul);
+  color: var(--navy);
   font-size: clamp(38px, 4.2vw, 54px);
   font-weight: 800;
   line-height: 1.18;
@@ -306,7 +315,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-content h1 span {
-  color: var(--azul);
+  color: var(--navy);
 }
 
 /* BOTONES */
@@ -329,32 +338,31 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px;
   font-weight: 600;
 
-  transition: all 0.3s ease;
+  /* Elevación y brillo diagonal: bloque compartido al final del archivo */
+  transition: background-color 0.3s ease;
 }
 
 /* BOTON PRINCIPAL */
 .hero-btn-primary {
-  background-color: var(--azul);
-  color: var(--blanco);
-  border: 2px solid var(--azul);
+  background-color: var(--navy);
+  color: var(--white);
+  border: 2px solid var(--navy);
   box-shadow: 0 4px 8px rgba(22, 53, 94, 0.18);
 }
 
 .hero-btn-primary:hover {
   background-color: #244b78;
-  transform: translateY(-3px);
 }
 
 /* BOTON SECUNDARIO */
 .hero-btn-secondary {
-  background-color: var(--amarillo);
-  color: var(--azul);
-  border: 2px solid var(--amarillo);
+  background-color: var(--yellow);
+  color: var(--navy);
+  border: 2px solid var(--yellow);
 }
 
 .hero-btn-secondary:hover {
   background-color: #e4b82e;
-  transform: translateY(-3px);
 }
 
 /* ELEMENTO VISUAL DEL LOGO */
@@ -385,7 +393,7 @@ a { color: inherit; text-decoration: none; }
   width: 240px;
   height: 240px;
 
-  border: 2px solid var(--amarillo);
+  border: 2px solid var(--yellow);
   border-radius: 50%;
 }
 
@@ -396,27 +404,7 @@ a { color: inherit; text-decoration: none; }
   z-index: 1;
 }
 
-/* ANIMACION */
-.hero-content,
-.hero-visual {
-  animation: heroAppear 0.8s ease forwards;
-}
-
-.hero-visual {
-  animation-delay: 0.15s;
-}
-
-@keyframes heroAppear {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* ANIMACION: entrada escalonada con data-reveal="hero" (ver bloque compartido al final) */
 
 /* TABLETS */
 @media (max-width: 900px) {
@@ -1770,55 +1758,18 @@ html {
 }
 
 .card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 2.5rem 1.5rem;
+  background-color: var(--white);
   width: 100%;
   max-width: 340px;
-  box-shadow: 0 4px 15px rgba(22, 53, 94, 0.08);
   text-align: center;
 }
 /* =========================================
-   SECCIÓN: PROBLEMA (Detalles y Hover)
+   SECCIÓN: PROBLEMA (Detalles)
+   Radio, padding, sombra y hover: bloque compartido al final del archivo
    ========================================= */
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(22, 53, 94, 0.15);
-}
-
-.problema-card {
-  border-top: 5px solid #f2c744;
-}
-
-.problema-card-pending {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.problema-card-pending,
-.problema-card-visible {
-  transition:
-    opacity 0.6s ease-out var(--problema-delay, 0s),
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.problema-card-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.problema-card-visible:hover {
-  transform: translateY(-8px);
-}
-
-.card-icon {
-  background-color: #16355e;
-  color: #ffffff;
+.problema-section .card-icon {
+  background-color: var(--navy);
+  color: var(--white);
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -1866,24 +1817,22 @@ html {
     gap: 25px;
 }
 
+/* Radio, padding, sombra y hover: bloque compartido al final del archivo */
 .caracteristica-card {
-    background: #ffffff;
-    padding: 30px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(22, 53, 94, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 4px solid #f2c744; 
+    background: var(--white);
 }
 
-.caracteristica-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(22, 53, 94, 0.15);
-}
-
-.card-icon {
-    font-size: 2.5rem;
-    color: #16355e; 
-    margin-bottom: 20px;
+.caracteristicas-section .card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: var(--navy);
+    color: var(--yellow);
+    font-size: 1.9rem;
 }
 
 .caracteristica-card h3 {
@@ -1897,3 +1846,201 @@ html {
     font-size: 0.90rem;
     line-height: 1.5;
 } 
+
+/* === Hero, Problema, Cómo funciona y Características === */
+/* Mismo lenguaje visual que Segmentos. El estado oculto inicial solo aplica con .js
+   en <html> (lo agrega animations.js); sin JS todo el contenido queda visible. */
+
+/* ---------- Entrada escalonada (el retraso de 120ms lo calcula animations.js) ---------- */
+.js .hero-reveal:not(.hero-visible),
+.js .problema-reveal:not(.problema-visible),
+.js .como-reveal:not(.como-visible),
+.js .carac-reveal:not(.carac-visible) { opacity: 0; }
+
+.hero-visible,
+.problema-visible,
+.como-visible,
+.carac-visible {
+  animation: reveal-rise .6s cubic-bezier(.22, 1, .36, 1) backwards;
+}
+
+.hero-visible { animation-delay: var(--hero-delay, 0ms); }
+.problema-visible { animation-delay: var(--problema-delay, 0ms); }
+.como-visible { animation-delay: var(--como-delay, 0ms); }
+.carac-visible { animation-delay: var(--carac-delay, 0ms); }
+
+@keyframes reveal-rise {
+  from { opacity: 0; transform: translateY(24px); }
+}
+
+/* ---------- Tarjetas: mismo hover que .seg-card ---------- */
+.problema-card,
+.como-card,
+.caracteristica-card {
+  --card-lift: 0px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid rgba(22, 53, 94, .12);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(22, 53, 94, .06);
+  transform: translateY(var(--card-lift));
+  transition: transform .3s ease-out, box-shadow .3s ease-out;
+}
+
+/* Borde superior amarillo que crece de 0 a 100% */
+.problema-card::before,
+.como-card::before,
+.caracteristica-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .3s ease-out;
+  pointer-events: none;
+}
+
+/* Reflejo diagonal que cruza la tarjeta (detrás del contenido) */
+.problema-card::after,
+.como-card::after,
+.caracteristica-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -50%;
+  left: 0;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(242, 199, 68, .18), rgba(250, 250, 245, .55), transparent);
+  transform: translateX(-160%) rotate(20deg);
+  pointer-events: none;
+}
+
+/* Íconos: fondo amarillo que aparece detrás del ícono */
+.problema-section .card-icon,
+.como-icon,
+.caracteristicas-section .card-icon {
+  position: relative;
+  isolation: isolate;
+  transition: color .3s ease;
+}
+
+.problema-section .card-icon::before,
+.como-icon::before,
+.caracteristicas-section .card-icon::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--yellow);
+  opacity: 0;
+  transform: scale(.6);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+@media (hover: hover) {
+  .problema-card:hover,
+  .como-card:hover,
+  .caracteristica-card:hover {
+    --card-lift: -6px;
+    box-shadow: 0 4px 14px rgba(22, 53, 94, .06), 0 18px 36px rgba(22, 53, 94, .18);
+  }
+
+  .problema-card:hover::before,
+  .como-card:hover::before,
+  .caracteristica-card:hover::before { transform: scaleX(1); }
+
+  .problema-card:hover::after,
+  .como-card:hover::after,
+  .caracteristica-card:hover::after {
+    transform: translateX(320%) rotate(20deg);
+    transition: transform .9s ease;
+  }
+
+  .problema-card:hover .card-icon,
+  .como-card:hover .como-icon,
+  .caracteristica-card:hover .card-icon {
+    color: var(--navy);
+    animation: card-icon-bounce .4s ease-out;
+  }
+
+  .problema-card:hover .card-icon::before,
+  .como-card:hover .como-icon::before,
+  .caracteristica-card:hover .card-icon::before { opacity: 1; transform: scale(1); }
+}
+
+@keyframes card-icon-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+/* ---------- Hero: botones con el mismo efecto que .cta-btn ---------- */
+.hero-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: background-color .3s ease, transform .2s ease;
+}
+
+.hero-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .6), transparent);
+  transform: translateX(-180%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.hero-btn:hover,
+.hero-btn:focus-visible { transform: translateY(-2px); }
+
+.hero-btn:hover::before,
+.hero-btn:focus-visible::before {
+  transform: translateX(350%) skewX(-20deg);
+  transition: transform .6s ease;
+}
+
+.hero-btn:active { transform: translateY(0) scale(.99); }
+
+.hero-btn:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+
+/* ---------- Movimiento reducido: todo visible y sin animación ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero, .hero *, .hero *::before, .hero *::after,
+  .problema-section, .problema-section *, .problema-section *::before, .problema-section *::after,
+  .como, .como *, .como *::before, .como *::after,
+  .caracteristicas-section, .caracteristicas-section *, .caracteristicas-section *::before, .caracteristicas-section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .hero-btn,
+  .problema-card,
+  .como-card,
+  .caracteristica-card { transform: none !important; }
+
+  .js .hero-reveal,
+  .js .problema-reveal,
+  .js .como-reveal,
+  .js .carac-reveal { opacity: 1; }
+
+  .hero-btn::before,
+  .problema-card::after,
+  .como-card::after,
+  .caracteristica-card::after { display: none; }
+}
+/* === Fin Hero, Problema, Cómo funciona y Características === */

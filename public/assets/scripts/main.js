@@ -217,41 +217,8 @@
 })();
 /* === Fin Segmentos / CTA / Footer === */
 
-// =========================================
-// ANIMACIÓN: SECCIÓN PROBLEMA
-// =========================================
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.problema-card');
+// La aparición de las tarjetas de Problema (data-reveal="problema") está en animations.js
 
-  if (
-    !cards.length ||
-    !('IntersectionObserver' in window) ||
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  ) {
-    return;
-  }
-
-  const observerOptions = {
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
-  };
-
-  const scrollObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove('problema-card-pending');
-        entry.target.classList.add('problema-card-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  cards.forEach((card, index) => {
-    card.classList.add('problema-card-pending');
-    card.style.setProperty('--problema-delay', `${index * 0.15}s`);
-    scrollObserver.observe(card);
-  });
-});
 document.addEventListener("DOMContentLoaded", () => {
 
     const buttons = document.querySelectorAll(".hero-btn");
